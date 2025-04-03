@@ -6,4 +6,5 @@ class UserModel extends Database
     {
         return $this->select("SELECT * FROM users ORDER BY username ASC LIMIT ?", ["i", $limit]);
     }
+
 }

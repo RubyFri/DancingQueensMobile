@@ -1,8 +1,8 @@
 <?php
-class UserController extends BaseController
+class BookingController extends BaseController
 {
     /** 
-    * "/user/list" Endpoint - Get list of users 
+    * "/booking/list" Endpoint - Get list of bookings 
     */
     public function listAction()
     {
@@ -12,13 +12,13 @@ class UserController extends BaseController
 
         if (strtoupper($requestMethod) == 'GET') {
             try {
-                $userModel = new UserModel();
+                $bookingModel = new BookingModel();
                 $intLimit = 10;
                 if (isset($arrQueryStringParams['limit']) && $arrQueryStringParams['limit']) {
                     $intLimit = (int) $arrQueryStringParams['limit'];
                 }
-                $arrUsers = $userModel->getUsers($intLimit);
-                $responseData = json_encode($arrUsers);
+                $arrBookings = $bookingModel->getBookings($intLimit);
+                $responseData = json_encode($arrBookings);
             } catch (Error $e) {
                 $strErrorDesc = $e->getMessage() . ' Something went wrong! Please contact support.';
                 $strErrorHeader = 'HTTP/1.1 500 Internal Server Error';

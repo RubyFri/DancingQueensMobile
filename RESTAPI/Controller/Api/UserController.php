@@ -1,4 +1,5 @@
 <?php
+require_once 'Authentication.php';
 class UserController extends BaseController
 {
     /** 
@@ -6,6 +7,7 @@ class UserController extends BaseController
 */
     public function listAction()
     {
+        authenticate();
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         $arrQueryStringParams = $this->getQueryStringParams();
@@ -38,7 +40,13 @@ class UserController extends BaseController
             );
         }
     }
+
+/** 
+* "/user/create" Endpoint - creates a new user .ie. creates a new account.
+*/
+
     public function createAction() {
+
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
 

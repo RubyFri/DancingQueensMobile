@@ -1,13 +1,10 @@
 <?php
 define("PROJECT_ROOT_PATH", __DIR__ . "/../");
-
-// Include configuration
+// include main configuration file 
 require_once PROJECT_ROOT_PATH . "/inc/config.php";
-
-// Include base controller
+// include the base controller file 
 require_once PROJECT_ROOT_PATH . "/Controller/Api/BaseController.php";
-
-// Include models
-require_once PROJECT_ROOT_PATH . "/Model/Database.php";
+// include the use model file 
 require_once PROJECT_ROOT_PATH . "/Model/UserModel.php";
-require_once PROJECT_ROOT_PATH . "/Model/BookingModel.php";  // ✅ Add this line
+require_once PROJECT_ROOT_PATH . "/Model/BookingModel.php";
+?>

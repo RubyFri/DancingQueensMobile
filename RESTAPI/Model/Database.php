@@ -1,4 +1,3 @@
-
 <?php
 class Database
 {
@@ -27,15 +26,16 @@ class Database
         }
         return false;
     }
-    private function executeStatement($query = "" , $params = [])
+    protected function executeStatement($query = "" , $params = [])
     {
         try {
             $stmt = $this->connection->prepare( $query );
             if($stmt === false) {
                 throw New Exception("Unable to do prepared statement: " . $query);
             }
-            if( $params ) {
-                $stmt->bind_param($params[0], $params[1]);
+            if( count($params)>0) {
+                $types = str_repeat('s', count($params));
+                $stmt->bind_param($types, ...$params);
             }
             $stmt->execute();
             return $stmt;

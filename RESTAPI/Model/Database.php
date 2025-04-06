@@ -26,6 +26,7 @@ class Database
         }
         return false;
     }
+    // returns the statement
     protected function executeStatement($query = "" , $params = [])
     {
         try {
@@ -33,7 +34,7 @@ class Database
             if($stmt === false) {
                 throw New Exception("Unable to do prepared statement: " . $query);
             }
-            if( count($params)>0) {
+            if(count($params)>0) {
                 $types = str_repeat('s', count($params));
                 $stmt->bind_param($types, ...$params);
             }

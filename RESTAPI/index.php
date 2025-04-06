@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Allow all origins (for testing purposes)
 header("Access-Control-Allow-Origin: *");
 // Allow specific methods (GET, POST, DELETE, PUT, OPTIONS)
@@ -40,23 +41,27 @@ switch ($uri[1]) {
         require PROJECT_ROOT_PATH . "/Controller/Api/UserController.php";
         $objController = new UserController();
         break;
+    case 'login':
+    case 'logout':
+        require PROJECT_ROOT_PATH . "/Controller/Api/LoginLogoutController.php";
+        $objController = new LoginLogoutController();
+        break;
     default:
         header("HTTP/1.1 404 Not Found");
         echo json_encode(["error" => "Invalid API endpoint"]);
         exit();
 }
 
-// // Ensure an action is specified (except for DELETE requests, which use an ID)
-// if (!isset($uri[2]) && $requestMethod != 'DELETE' && $requestMethod != 'POST') {
-//     header("HTTP/1.1 400 Bad Request");
-//     echo json_encode(["error" => "No action specified"]);
-//     exit();
-// }
-
 // Handle POST requests for creating new resources
 if ($requestMethod == 'POST') {
-    // For other methods like GET, PUT, etc.
-    $strMethodName = $uri[2] . 'Action';
+    if ($uri[1] == 'login') {
+        $strMethodName = 'loginAction'; 
+    } elseif ($uri[1] == 'logout') {
+        $strMethodName = 'logoutAction'; 
+    } else {
+        $strMethodName = $uri[2] . 'Action'; 
+    }
+    
     // Check if method exists in the controller
     if (method_exists($objController, $strMethodName)) {
         // Call the appropriate method

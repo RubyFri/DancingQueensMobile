@@ -29,7 +29,7 @@ export default function MeetDancers() {
         She is smiling widely and posing beautifully with one leg up."
       />
 
-<Text style={styles.h2}>Sage</Text>
+    <Text style={styles.h2}>Sage</Text>
       <Text style={styles.p}>Hi I'm Sage! I'm a junior at Wesleyan University majoring in Math and Computer Science.
           Contrary to the title of this page, I don't actually dance! You should still hire me anyway
           so that I can get paid to do what I love - standing around awkwardly.</Text>
@@ -40,10 +40,6 @@ export default function MeetDancers() {
         accessibilityLabel="This is a photo of our dancing queen Sage. 
         She is smiling widely and posing beautifully with one leg up."
       />
-
-
-
-
 
 
     </View>

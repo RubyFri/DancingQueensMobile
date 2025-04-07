@@ -9,6 +9,10 @@ export default function Home({ navigation }) {
   title="Meet Our Dancers"
   onPress={() => navigation.navigate('MeetDancers')}
 />
+<Button
+  title="Create Account"
+  onPress={() => navigation.navigate('createAcc')}
+/>
       <Text style={styles.heading1}> Feeling <Text style={styles.blueText}>Blue? </Text> 
       Hire Our Crew! We'll Dance For You! 💃 🕺 ✨</Text>
 

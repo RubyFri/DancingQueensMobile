@@ -1,10 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, Button } from 'react-native';
 
-export default function MeetDancers() {
+export default function MeetDancers({navigation}) {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
+    <Button
+    title="Home Page"
+    onPress={() => navigation.navigate('Home')}
+    />
       <Text style={styles.heading1}>Meet the Dancers:</Text>
       <Text style={styles.h2}>Ruby</Text>
       <Text style={styles.p}>Hi I'm Ruby! I am a current a Sophomore at Wesleyan University studying Computer Science and Mathematics.

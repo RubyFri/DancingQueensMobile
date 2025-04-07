@@ -16,7 +16,7 @@ export default function MeetDancers({navigation}) {
              but that's part of the reason you should hire me! I will make you laugh
             your socks off (not in a weird way) with my not-so-groovy moves.</Text>
         <Image 
-        source={require('./assets/Ruby.avif')} // Path to image
+        source={require('./assets/ruby.jpeg')} // Path to image
         style={styles.image}
         accessible={true}
         accessibilityLabel="This is a photo of our dancing queen Ruby. 
@@ -26,7 +26,7 @@ export default function MeetDancers({navigation}) {
       <Text style={styles.p}>Hello! I am Yenta, the queen among dancers. I dance hip hop, ballet, West African, Javanese and Tap.
            I also dance Contemporary, Ballroom and Swing. Oh, and also Tango. Hit me up to book.</Text>
         <Image 
-        source={require('./assets/Yenta.avif')} // Path to image
+        source={require('./assets/yenta.jpeg')} // Path to image
         style={styles.image}
         accessible={true}
         accessibilityLabel="This is a photo of our dancing queen Yenta. 
@@ -38,7 +38,7 @@ export default function MeetDancers({navigation}) {
           Contrary to the title of this page, I don't actually dance! You should still hire me anyway
           so that I can get paid to do what I love - standing around awkwardly.</Text>
         <Image 
-        source={require('./assets/Sage.avif')} // Path to image
+        source={require('./assets/sage.jpeg')} // Path to image
         style={styles.image}
         accessible={true}
         accessibilityLabel="This is a photo of our dancing queen Sage. 
@@ -83,9 +83,17 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: 20,
+    marginBottom: 5,
     margin:'3%',
     flexWrap: 'wrap',},
+
+    image: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        margin: '10%',
+        marginBottom: 20,
+      },
 
 
 });

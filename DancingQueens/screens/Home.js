@@ -7,7 +7,7 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
       <View style = {styles.row} /* The Navbar */> 
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
-        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('createAcc')}><Text style = {styles.buttonText}>Create Account</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('CreateAcc')}><Text style = {styles.buttonText}>Create Account</Text></TouchableOpacity>
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Login')}><Text style = {styles.buttonText}>Login</Text></TouchableOpacity>
       </View>
       <Text style={styles.heading1}> Feeling <Text style={styles.blueText}>Blue? </Text> 

@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable, TextInput, Alert, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 
 export default function Login({ navigation }) {
@@ -45,17 +45,11 @@ export default function Login({ navigation }) {
 
         <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.container}>
-        <Button
-    title="Home"
-    onPress={() => navigation.navigate('Home')}/>
-
-    <Button
-    title="Meet Our Dancers"
-    onPress={() => navigation.navigate('MeetDancers')}/>
-
-    <Button
-    title="Create Account"
-    onPress={() => navigation.navigate('CreateAcc')}/>
+        <View style = {styles.row} /* The Navbar */> 
+                <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Home')}><Text style = {styles.buttonText}>Home</Text></TouchableOpacity>
+                <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
+                <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('CreateAcc')}><Text style = {styles.buttonText}>Create Account</Text></TouchableOpacity>
+        </View>
   
           <Text style={styles.heading1}>LOGIN</Text>
   
@@ -119,5 +113,23 @@ const styles = StyleSheet.create({
     margin:'3%',
     flexWrap: 'wrap',},
 
-
+    row: {
+      alignContent: 'center',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      gap: 10,
+      padding: 10,
+    },
+  
+    button: {
+      backgroundColor: '#14943C',
+      flexWrap: 'wrap',
+      padding: '5%',
+      alignItems: 'center'
+    },
+  
+    buttonText: {
+      fontSize: 20,
+    }
 });

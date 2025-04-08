@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable, TextInput, Alert, TouchableOpacity} from 'react-native';
 import { useState } from 'react';
 
 export default function CreateAcc({ navigation }) {
@@ -51,19 +51,11 @@ export default function CreateAcc({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
-    <Button
-    title="Home"
-    onPress={() => navigation.navigate('Home')}/>
-
-    <Button
-    title="Meet Our Dancers"
-    onPress={() => navigation.navigate('MeetDancers')}/>
-
-<Button
-  title="Login"
-  onPress={() => navigation.navigate('Login')}
-/>
-
+      <View style = {styles.row} /* The Navbar */> 
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Home')}><Text style = {styles.buttonText}>Home</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Login')}><Text style = {styles.buttonText}>Login</Text></TouchableOpacity>      
+      </View>
 <Text style={styles.heading1}>CREATE ACCOUNT</Text>
 
 <Text style={styles.p}>New Username</Text>
@@ -138,5 +130,20 @@ const styles = StyleSheet.create({
     margin:'3%',
     flexWrap: 'wrap',},
 
-
+    row: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      gap: 10,
+      padding: 10,
+    },
+  
+    button: {
+      backgroundColor: '#14943C',
+      flexWrap: 'wrap',
+      padding: '5%',
+    },
+  
+    buttonText: {
+      fontSize: 20,
+    }
 });

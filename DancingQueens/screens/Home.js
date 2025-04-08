@@ -1,22 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable, TouchableOpacity } from 'react-native';
 
 export default function Home({ navigation }) {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
-    <Button
-  title="Meet Our Dancers"
-  onPress={() => navigation.navigate('MeetDancers')}
-/>
-<Button
-  title="Create Account"
-  onPress={() => navigation.navigate('CreateAcc')}
-/>
-<Button
-  title="Login"
-  onPress={() => navigation.navigate('Login')}
-/>
+      <View style = {styles.row} /* The Navbar */> 
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('createAcc')}><Text style = {styles.buttonText}>Create Account</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Login')}><Text style = {styles.buttonText}>Login</Text></TouchableOpacity>
+      </View>
       <Text style={styles.heading1}> Feeling <Text style={styles.blueText}>Blue? </Text> 
       Hire Our Crew! We'll Dance For You! 💃 🕺 ✨</Text>
 
@@ -119,6 +112,22 @@ const styles = StyleSheet.create({
     margin:'3%',
     flexWrap: 'wrap',
 
-  }
+  },
 
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 10,
+    padding: 10,
+  },
+
+  button: {
+    backgroundColor: '#14943C',
+    flexWrap: 'wrap',
+    padding: '5%',
+  },
+
+  buttonText: {
+    fontSize: 20,
+  }
 });

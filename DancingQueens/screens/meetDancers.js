@@ -94,8 +94,10 @@ const styles = StyleSheet.create({
     },
     
     row: {
+      alignContent: 'center',
       flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
       gap: 10,
       padding: 10,
     },
@@ -104,6 +106,7 @@ const styles = StyleSheet.create({
       backgroundColor: '#14943C',
       flexWrap: 'wrap',
       padding: '5%',
+      alignItems: 'center'
     },
   
     buttonText: {

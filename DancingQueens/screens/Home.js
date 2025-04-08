@@ -11,7 +11,11 @@ export default function Home({ navigation }) {
 />
 <Button
   title="Create Account"
-  onPress={() => navigation.navigate('createAcc')}
+  onPress={() => navigation.navigate('CreateAcc')}
+/>
+<Button
+  title="Login"
+  onPress={() => navigation.navigate('Login')}
 />
       <Text style={styles.heading1}> Feeling <Text style={styles.blueText}>Blue? </Text> 
       Hire Our Crew! We'll Dance For You! 💃 🕺 ✨</Text>

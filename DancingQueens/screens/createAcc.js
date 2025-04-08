@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable, TextInput, Alert } from 'react-native';
 import { useState } from 'react';
 
-export default function createAcc({ navigation }) {
+export default function CreateAcc({ navigation }) {
     const [username, setUsername] = useState(''); //create empty variables to store username (which the user will enter)
     const [password, setPassword] = useState('');//create empty variables to store pass 
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -58,6 +58,11 @@ export default function createAcc({ navigation }) {
     <Button
     title="Meet Our Dancers"
     onPress={() => navigation.navigate('MeetDancers')}/>
+
+<Button
+  title="Login"
+  onPress={() => navigation.navigate('Login')}
+/>
 
 <Text style={styles.heading1}>CREATE ACCOUNT</Text>
 

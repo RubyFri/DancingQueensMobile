@@ -7,8 +7,16 @@ export default function MeetDancers({navigation}) {
     <View style={styles.container}>
     <Button
     title="Home Page"
-    onPress={() => navigation.navigate('Home')}
+    onPress={() => navigation.navigate('Home')} 
     />
+    <Button
+  title="Create Account"
+  onPress={() => navigation.navigate('CreateAcc')}
+/>
+    <Button
+  title="Login"
+  onPress={() => navigation.navigate('Login')}
+/>
       <Text style={styles.heading1}>Meet the Dancers:</Text>
       <Text style={styles.h2}>Ruby</Text>
       <Text style={styles.p}>Hi I'm Ruby! I am a current a Sophomore at Wesleyan University studying Computer Science and Mathematics.

@@ -7,6 +7,8 @@ export default function MeetDancers({navigation}) {
     <View style={styles.container}>
       <View style = {styles.row} /* The Navbar */> 
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Home')}><Text style = {styles.buttonText}>Home</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('createAcc')}><Text style = {styles.buttonText}>Create Account</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Login')}><Text style = {styles.buttonText}>Login</Text></TouchableOpacity>      
       </View>
       <Text style={styles.heading1}>Meet the Dancers:</Text>
       <Text style={styles.h2}>Ruby</Text>

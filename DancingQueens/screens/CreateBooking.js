@@ -88,7 +88,7 @@ export default function CreateBooking({ navigation }) {
   
       if (response.ok) {
         Alert.alert('Booking created successfully!');
-        navigation.navigate('BookingList');
+        
       } else {
         console.error('Error from API:', data.message || 'Booking creation failed');
         Alert.alert('Error', data.message || 'Booking creation failed');
@@ -97,6 +97,8 @@ export default function CreateBooking({ navigation }) {
       console.error('API Error:', error); // Log the error to identify the issue
       Alert.alert('Error', 'Something went wrong. Please try again later.');
     }
+    navigation.navigate('LoginLanding');
+     return; //navigate to loginLanding
   };
   
 

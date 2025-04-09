@@ -96,8 +96,13 @@ export default function LoginLanding({ navigation }) {
           keyExtractor={(item) => item.booking_id.toString()}
         />
     <View style = {styles.row} /* The CUD functionality */> 
-    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateBooking')}>
-            <Text style={styles.buttonText}>Create Booking</Text> </TouchableOpacity> </View>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateBooking')}>
+        <Text style={styles.buttonText}>Create Booking</Text> </TouchableOpacity> 
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('DeleteBooking')}>
+            <Text style={styles.buttonText}>Delete Booking</Text> </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ModifyBooking')}>
+            <Text style={styles.buttonText}>Modify Booking</Text> </TouchableOpacity>
+    </View>
 
         <StatusBar style="auto" />
       </View>

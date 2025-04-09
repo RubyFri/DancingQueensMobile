@@ -64,7 +64,7 @@ export default function DeleteBooking({ navigation }) {
   
       if (response.ok) {
         Alert.alert('Booking deleted successfully!');
-        navigation.navigate('BookingList');
+        navigation.navigate('LoginLanding');
       } else {
         console.error('Error from API:', data.message || 'Booking deletion failed');
         Alert.alert('Error', data.message || 'Booking deletion failed');

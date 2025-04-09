@@ -95,6 +95,7 @@ export default function LoginLanding({ navigation }) {
           renderItem={renderBookingItem}
           keyExtractor={(item) => item.booking_id.toString()}
         />
+    <ScrollView>    
     <View style = {styles.row} /* The CUD functionality */> 
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateBooking')}>
         <Text style={styles.buttonText}>Create Booking</Text> </TouchableOpacity> 
@@ -103,7 +104,7 @@ export default function LoginLanding({ navigation }) {
       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ModifyBooking')}>
             <Text style={styles.buttonText}>Modify Booking</Text> </TouchableOpacity>
     </View>
-
+    </ScrollView>  
         <StatusBar style="auto" />
       </View>
   );

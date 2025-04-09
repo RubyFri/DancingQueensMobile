@@ -1,14 +1,40 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity} from 'react-native';
+import { useState,useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function MeetDancers({navigation}) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const sessionId = await AsyncStorage.getItem('session_id');
+      setIsLoggedIn(!!sessionId); // true if sessionId exists, false if not
+    };
+  
+    const checkagain = navigation.addListener('focus', checkLoginStatus); // Refresh/ check again if user logged in every time this is the screen being shown
+  
+    checkLoginStatus();
+  
+    return checkagain;
+  }, [navigation]);
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
       <View style = {styles.row} /* The Navbar */> 
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Home')}><Text style = {styles.buttonText}>Home</Text></TouchableOpacity>
-        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('CreateAcc')}><Text style = {styles.buttonText}>Create Account</Text></TouchableOpacity>
-        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Login')}><Text style = {styles.buttonText}>Login</Text></TouchableOpacity>      
+        {isLoggedIn && (
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('LoginLanding')}><Text style = {styles.buttonText}>My Profile</Text></TouchableOpacity>
+      )} 
+      {!isLoggedIn && (
+        <>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateAcc')}>
+            <Text style={styles.buttonText}>Create Account</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+        </>
+      )}
       </View>
       <Text style={styles.heading1}>Meet the Dancers:</Text>
       <Text style={styles.h2}>Ruby</Text>

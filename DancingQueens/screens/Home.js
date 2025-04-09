@@ -1,15 +1,45 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, Linking, Pressable, TouchableOpacity } from 'react-native';
+import { useState,useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Home({ navigation }) {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const sessionId = await AsyncStorage.getItem('session_id');
+      setIsLoggedIn(!!sessionId); // true if sessionId exists, false if not
+    };
+  
+    const checkagain = navigation.addListener('focus', checkLoginStatus); // Refresh/ check again if user logged in every time this is the screen being shown
+  
+    checkLoginStatus();
+  
+    return checkagain;
+  }, [navigation]);
+
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
     <View style={styles.container}>
       <View style = {styles.row} /* The Navbar */> 
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
-        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('CreateAcc')}><Text style = {styles.buttonText}>Create Account</Text></TouchableOpacity>
-        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Login')}><Text style = {styles.buttonText}>Login</Text></TouchableOpacity>
-        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('CreateBooking')}><Text style = {styles.buttonText}>Create Booking</Text></TouchableOpacity>
+
+        {!isLoggedIn && (
+        <>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateAcc')}>
+            <Text style={styles.buttonText}>Create Account</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+        </>
+      )}
+        {isLoggedIn && (
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('LoginLanding')}><Text style = {styles.buttonText}>My Profile</Text></TouchableOpacity>
+      )}  
+            const [isLoggedIn, setIsLoggedIn] = useState(false);
       </View>
       <Text style={styles.heading1}> Feeling <Text style={styles.blueText}>Blue? </Text> 
       Hire Our Crew! We'll Dance For You! 💃 🕺 ✨</Text>

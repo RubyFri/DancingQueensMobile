@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import MeetDancers from './screens/meetDancers';
 import CreateAcc from './screens/CreateAcc';
 import Login from './screens/Login';
+import LoginLanding from './screens/LoginLanding';
 import CreateBooking from './screens/CreateBooking';
 
 const Stack = createNativeStackNavigator();

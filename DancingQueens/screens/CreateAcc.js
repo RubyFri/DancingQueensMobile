@@ -57,7 +57,7 @@ export default function CreateAcc({ navigation }) {
             Alert.alert('Error', data.message || 'Account creation failed');
           }
         } catch (error) {
-          console.error('API Error:', error);
+          //console.error('API Error:', error);
           Alert.alert('Error', 'Something went wrong. Try again later.');
         }
       };

@@ -39,7 +39,6 @@ export default function Home({ navigation }) {
         {isLoggedIn && (
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('LoginLanding')}><Text style = {styles.buttonText}>My Profile</Text></TouchableOpacity>
       )}  
-            const [isLoggedIn, setIsLoggedIn] = useState(false);
       </View>
       <Text style={styles.heading1}> Feeling <Text style={styles.blueText}>Blue? </Text> 
       Hire Our Crew! We'll Dance For You! 💃 🕺 ✨</Text>

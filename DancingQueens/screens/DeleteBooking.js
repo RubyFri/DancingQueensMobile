@@ -21,7 +21,7 @@ export default function DeleteBooking({ navigation }) {
           setToken(storedToken);
         }
       } catch (error) {
-        console.error('Error loading user data:', error);
+        //console.error('Error loading user data:', error);
       }
     };
     loadUser();
@@ -39,7 +39,7 @@ export default function DeleteBooking({ navigation }) {
     };
   
     try {
-      console.log('Sending request with payload:', payload); // Log payload
+      //console.log('Sending request with payload:', payload); // Log payload
   
       const response = await fetch('http://localhost:8080/index.php/booking/delete', {
         method: 'DELETE',
@@ -51,14 +51,14 @@ export default function DeleteBooking({ navigation }) {
       });
   
       const responseText = await response.text();
-      console.log('Raw response:', responseText); // Log the raw response
+      //console.log('Raw response:', responseText); // Log the raw response
   
       let data;
       try {
         data = JSON.parse(responseText); // Try to parse JSON response
       } catch (error) {
-        console.error('Invalid JSON response:', responseText); // Log invalid response
-        Alert.alert('Error', 'Something went wrong while deleting the booking.');
+        //console.error('Invalid JSON response:', responseText); // Log invalid response
+        Alert.alert('Error', 'You can only delete your own bookings.');
         return;
       }
   
@@ -66,11 +66,11 @@ export default function DeleteBooking({ navigation }) {
         Alert.alert('Booking deleted successfully!');
         navigation.navigate('LoginLanding');
       } else {
-        console.error('Error from API:', data.message || 'Booking deletion failed');
+        //console.error('Error from API:', data.message || 'Booking deletion failed');
         Alert.alert('Error', data.message || 'Booking deletion failed');
       }
     } catch (error) {
-      console.error('API Error:', error); // Log the error to identify the issue
+      //console.error('API Error:', error); // Log the error to identify the issue
       Alert.alert('Error', 'Something went wrong. Please try again later.');
     }
   };

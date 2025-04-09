@@ -26,7 +26,7 @@ export default function LoginLanding({ navigation }) {
                         credentials:"include"
                     });
 
-                    console.log(response);
+                    //console.log(response);
                     const responseText = await response.text(); // Get the response as text first
     
                     // Try to parse the response as JSON
@@ -35,11 +35,11 @@ export default function LoginLanding({ navigation }) {
                         data = JSON.parse(responseText);
                     } catch (error) {
                         // Handle invalid JSON response (i.e., error message)
-                        console.error("Invalid JSON response:", responseText);
+                        //console.error("Invalid JSON response:", responseText);
                         Alert.alert('Error', 'Something went wrong while loading your data.');
                         return;
                     }
-                    console.log(response);
+                    //console.log(response);
                     if (response.ok) {
                         setBookings(data); // Where data is an array of bookings
                     } else {
@@ -50,7 +50,7 @@ export default function LoginLanding({ navigation }) {
                     navigation.navigate('Login');
                 }
             } catch (error) {
-                console.error('Error:', error);
+                //console.error('Error:', error);
                 Alert.alert('Error', 'Something went wrong while loading your data.');
             }
         };
@@ -64,7 +64,7 @@ export default function LoginLanding({ navigation }) {
         Alert.alert('Logged out successfully');
         navigation.navigate('Home');
       } catch (error) {
-        console.error('Logout Error:', error);
+        //console.error('Logout Error:', error);
         Alert.alert('Error', 'Failed to log out. Try again.');
       }
     };
@@ -88,7 +88,9 @@ export default function LoginLanding({ navigation }) {
     <Text style={styles.buttonText}>Logout</Text>
   </TouchableOpacity>
         </View>
-        <Text style={styles.heading1}>You are currently logged in as {username}</Text> 
+        <Text style={styles.heading1}>
+  You are currently logged in as {String(username || '[Unknown]')}
+</Text>
 
         <FlatList 
           data={bookings}

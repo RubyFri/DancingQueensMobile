@@ -31,7 +31,7 @@ export default function ModifyBooking({ navigation }) {
           setToken(storedToken);
         }
       } catch (error) {
-        console.error('Error loading user data:', error);
+        //console.error('Error loading user data:', error);
       }
     };
     loadUser();
@@ -68,7 +68,7 @@ export default function ModifyBooking({ navigation }) {
     };
   
     try {
-      console.log('Sending request with payload:', payload); // Log payload
+      //console.log('Sending request with payload:', payload); // Log payload
   
       const response = await fetch('http://localhost:8080/index.php/booking/update', {
         method: 'PUT',
@@ -80,13 +80,13 @@ export default function ModifyBooking({ navigation }) {
       });
   
       const responseText = await response.text();
-      console.log('Raw response:', responseText); // Log the raw response
+      //console.log('Raw response:', responseText); // Log the raw response
   
       let data;
       try {
         data = JSON.parse(responseText); // Try to parse JSON response
       } catch (error) {
-        console.error('Invalid JSON response:', responseText); // Log invalid response
+        //console.error('Invalid JSON response:', responseText); // Log invalid response
         Alert.alert('Error', 'Something went wrong while modifying the booking.');
         return;
       }
@@ -95,11 +95,11 @@ export default function ModifyBooking({ navigation }) {
         Alert.alert('Booking modified successfully!');
         navigation.navigate('LoginLanding');
       } else {
-        console.error('Error from API:', data.message || 'Booking modification failed');
-        Alert.alert('Error', data.message || 'Booking modification failed');
+        //console.error('Error from API:', data.message || 'Booking modification failed');
+        Alert.alert('Error', data.message || 'You can only update your own bookings');
       }
     } catch (error) {
-      console.error('API Error:', error); // Log the error to identify the issue
+      //console.error('API Error:', error); // Log the error to identify the issue
       Alert.alert('Error', 'Something went wrong. Please try again later.');
     }
   };

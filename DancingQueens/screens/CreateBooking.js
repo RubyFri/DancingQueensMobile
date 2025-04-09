@@ -88,7 +88,7 @@ export default function CreateBooking({ navigation }) {
   
       if (response.ok) {
         Alert.alert('Booking created successfully!');
-        navigation.navigate('BookingList');
+        navigation.navigate('LoginLanding');
       } else {
         console.error('Error from API:', data.message || 'Booking creation failed');
         Alert.alert('Error', data.message || 'Booking creation failed');

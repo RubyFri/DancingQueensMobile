@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 
 require_once PROJECT_ROOT_PATH . "/Model/UserModel.php";
 
@@ -56,7 +54,7 @@ class LoginLogoutController extends BaseController
 
             $_SESSION['username'] = $username; // this is the username whcih can be accessed globally
 
-
+            
 
             $this->sendOutput(
 

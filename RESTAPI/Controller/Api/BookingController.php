@@ -8,7 +8,7 @@ class BookingController extends BaseController
 * "/booking/list" Endpoint - Get list of bookings 
 */
     public function listAction()
-    {   #authenticate();
+    {  authenticate();
 
         // Initialize error variables
         $strErrorDesc = '';
@@ -52,7 +52,7 @@ class BookingController extends BaseController
      * "/booking/delete" Endpoint - Delete a booking by ID 
      */
     public function deleteAction() {
-        authenticate();
+        #authenticate();
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         
@@ -164,7 +164,7 @@ class BookingController extends BaseController
      * "/booking/update" Endpoint - modify an existing booking
      */
     public function updateAction() {
-    authenticate();
+    #authenticate();
     $strErrorDesc = '';
     $requestMethod = $_SERVER["REQUEST_METHOD"];
     

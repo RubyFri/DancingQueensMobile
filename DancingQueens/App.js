@@ -6,6 +6,7 @@ import MeetDancers from './screens/meetDancers';
 import CreateAcc from './screens/CreateAcc';
 import Login from './screens/Login';
 import LoginLanding from './screens/LoginLanding';
+import CreateBooking from './screens/CreateBooking';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,7 @@ export default function App() {
         <Stack.Screen name="MeetDancers" component={MeetDancers} />
         <Stack.Screen name="CreateAcc" component={CreateAcc} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="LoginLanding" component={LoginLanding} />
+        <Stack.Screen name="CreateBooking" component={CreateBooking} />
       </Stack.Navigator>
     </NavigationContainer>
   );

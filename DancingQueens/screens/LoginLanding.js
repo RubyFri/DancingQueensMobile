@@ -23,16 +23,10 @@ export default function LoginLanding({ navigation }) {
                     // Fetch bookings after setting the session ID
                     const response = await fetch('http://localhost:8080/index.php/booking/list?limit=30', {
                         method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Authorization': `Bearer ${storedSessionId}`, // Use stored session ID directly
-                        },
+                        credentials:"include"
                     });
-                    console.log('Request Headers:', {
-                        'Authorization': `Bearer ${storedSessionId}`,
-                        'Content-Type': 'application/json',
-                    });
-    
+
+                    console.log(response);
                     const responseText = await response.text(); // Get the response as text first
     
                     // Try to parse the response as JSON
@@ -80,13 +74,16 @@ export default function LoginLanding({ navigation }) {
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Home')}><Text style = {styles.buttonText}>Home</Text></TouchableOpacity>
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
         </View>
-        <Text style={styles.heading1}>You are currently logged in as {username}</Text>
+        <Text style={styles.heading1}>You are currently logged in as {username}</Text> 
 
         <FlatList 
           data={bookings}
           renderItem={renderBookingItem}
           keyExtractor={(item) => item.booking_id.toString()}
         />
+    <View style = {styles.row} /* The CUD functionality */> 
+    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateBooking')}>
+            <Text style={styles.buttonText}>Create Booking</Text> </TouchableOpacity> </View>
 
         <StatusBar style="auto" />
       </View>

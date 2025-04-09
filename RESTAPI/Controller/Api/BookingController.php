@@ -1,4 +1,6 @@
 <?php
+// session_start();
+
 require_once 'Authentication.php';
 class BookingController extends BaseController
 {
@@ -6,7 +8,7 @@ class BookingController extends BaseController
 * "/booking/list" Endpoint - Get list of bookings 
 */
     public function listAction()
-    {   authenticate();
+    {   #authenticate();
 
         // Initialize error variables
         $strErrorDesc = '';

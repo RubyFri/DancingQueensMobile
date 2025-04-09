@@ -1,4 +1,5 @@
 <?php
+// session_start();
 class BookingModel extends Database {
 
     // Returns an array of booking records, limited to `$limit` number of records.
@@ -22,7 +23,10 @@ class BookingModel extends Database {
         $params = [$bookingId];
         $result = $this->select($query, $params);
         // $username = $_SESSION['username'];
-        
+        // If no booking found, throw an error
+        if (empty($result)) {
+            throw new Exception('Booking not found');
+        }
         if ($result[0]['username'] !== $username) {
           throw new Exception('You can only update your own bookings');
         }
@@ -36,7 +40,10 @@ class BookingModel extends Database {
         $params = [$bookingId];
         $result = $this->select($query, $params);
         $username = $_SESSION['username'];
-        
+        // If no booking found, throw an error
+        if (empty($result)) {
+            throw new Exception('Booking not found');
+        }
         if ($result[0]['username'] !== $username) {
           throw new Exception('You can only delete your own bookings');
         }

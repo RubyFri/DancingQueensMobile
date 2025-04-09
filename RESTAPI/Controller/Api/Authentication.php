@@ -10,7 +10,7 @@ function authenticate()
     }
 
     // Debugging: Print session data
-    var_dump($_SESSION);
+    // var_dump($_SESSION);
 
     if (!isset($_SESSION['user'])) {
         http_response_code(401);

@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ScrollView, Image, Button, Linking, Pressable, TextInput, Alert, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import { StyleSheet, Text, View, ScrollView, Button, TextInput, Alert, TouchableOpacity } from 'react-native';
+import { useState,useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Login({ navigation }) {
     const [username, setUsername] = useState('');//create empty variables to store username (which the user will enter)
@@ -23,12 +24,13 @@ export default function Login({ navigation }) {
       
             const data = await response.json();
       
-            if (response.ok && data.session_id) {
-                await AsyncStorage.setItem('session_id', data.session_id); //store session
-                Alert.alert('Login successful!');
-              //navigation.navigate('Home'); navigate to login landing once we make it
+            if (response.ok && data.session_id) { //needs work.
+              await AsyncStorage.setItem('session_id', data.session_id); // store session
+              await AsyncStorage.setItem('username', username); // store username (so we don't have to do another get req from API to get it)
+              Alert.alert('Login successful!');
+              navigation.navigate('LoginLanding');
               return;
-            } 
+            }
             else if (data.message) {
                 Alert.alert('Login failed', data.message);
             }

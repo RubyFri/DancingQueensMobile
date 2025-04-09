@@ -69,8 +69,6 @@ export default function Home({ navigation }) {
     View LinkedIn here
   </Text>
 </Pressable>
-
-
       <StatusBar style="auto" />
     </View>
   

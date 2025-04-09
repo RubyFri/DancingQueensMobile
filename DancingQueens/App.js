@@ -7,6 +7,8 @@ import CreateAcc from './screens/CreateAcc';
 import Login from './screens/Login';
 import LoginLanding from './screens/LoginLanding';
 import CreateBooking from './screens/CreateBooking';
+import DeleteBooking from './screens/DeleteBooking';
+import ModifyBooking from './screens/ModifyBooking';
 
 const Stack = createNativeStackNavigator();
 

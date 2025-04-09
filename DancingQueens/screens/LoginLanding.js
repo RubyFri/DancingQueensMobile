@@ -57,6 +57,17 @@ export default function LoginLanding({ navigation }) {
     
         loadData();
     }, [navigation])
+    const handleLogout = async () => {
+      try {
+        await AsyncStorage.removeItem('username');
+        await AsyncStorage.removeItem('session_id');
+        Alert.alert('Logged out successfully');
+        navigation.navigate('Home');
+      } catch (error) {
+        console.error('Logout Error:', error);
+        Alert.alert('Error', 'Failed to log out. Try again.');
+      }
+    };
 
         const renderBookingItem = ({ item }) => ( //item represents one booking renders the table
             <View style={styles.bookingCard}>
@@ -73,6 +84,9 @@ export default function LoginLanding({ navigation }) {
       <View style = {styles.row} /* The Navbar */> 
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Home')}><Text style = {styles.buttonText}>Home</Text></TouchableOpacity>
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handleLogout}>
+    <Text style={styles.buttonText}>Logout</Text>
+  </TouchableOpacity>
         </View>
         <Text style={styles.heading1}>You are currently logged in as {username}</Text> 
 

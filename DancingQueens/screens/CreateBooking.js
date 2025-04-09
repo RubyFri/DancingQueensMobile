@@ -55,7 +55,7 @@ export default function CreateBooking({ navigation }) {
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
-                
+
               },
               body: JSON.stringify(payload),
             });
@@ -104,20 +104,30 @@ export default function CreateBooking({ navigation }) {
           display="default"
           onChange={onTimeChange}
         />
-
-        <MultiSelect
-            style = {styles.dropdown}
-            placeholderStyle = {styles.placeholderStyle}
-            selectedTextStyle = {styles.selectedTextStyle}
-            inputSearchStyle = {styles.inputSearchStyle}
-            selectedStyle={styles.selectedStyle}
-            data = {dancersData}
-            labelField = {"label"}
-            valueField={"value"}
-            placeholder = "Choose Dancers"
-            value = {dancers}
-            onChange = {item => {setDancers(item);}}
-        />
+<MultiSelect
+  style={styles.dropdown}
+  placeholderStyle={styles.placeholderStyle}
+  selectedTextStyle={styles.selectedTextStyle}
+  inputSearchStyle={styles.inputSearchStyle}
+  selectedStyle={styles.selectedStyle}
+  data={dancersData}
+  labelField="label"
+  valueField="value"
+  placeholder="Choose Dancers"
+  search
+  value={dancers}
+  onChange={item => setDancers(item)}
+  multiple={true}
+  inside={true}  // renders selected values inside dropdown
+  renderSelectedItem={(item, unSelect) => (
+    <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 10 }}>
+      <Text>{item.label}</Text>
+      <TouchableOpacity onPress={() => unSelect && unSelect(item)}>
+        <Text style={{ color: 'red', marginLeft: 5 }}>✕</Text>
+      </TouchableOpacity>
+    </View>
+  )}
+/>
 
         <Button title="Create Booking" onPress={handleCreateBooking} />
       </View>

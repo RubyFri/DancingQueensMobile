@@ -13,9 +13,9 @@ export default function CreateBooking({ navigation }) {
   const [token, setToken] = useState('');
 
   const dancersData = [
-    { label: "Ruby", value: 1 },
-    { label: "Yenta", value: 2 },
-    { label: "Sage", value: 3 },
+    { label: "Ruby", value: "Ruby" },
+    { label: "Yenta", value: "Yenta" },
+    { label: "Sage", value: "Sage" },
   ];
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function CreateBooking({ navigation }) {
     }
   
     // Convert dancers array to a comma-separated string
-    const dancersString = dancers.map(dancer => dancer.toString()).join(',');
+    const dancersString = dancers.map(dancer => dancer).join(',');
   
     const payload = {
       username: username,

@@ -10,13 +10,13 @@ export default function ModifyBooking({ navigation }) {
   const [date, setDate] = useState(new Date());
   const [time, setTime] = useState(new Date());
   const [dancers, setDancers] = useState([]);
-  const [id, setid] = useState('')
+  const [booking_id, setid] = useState('')
   const [token, setToken] = useState('');
 
   const dancersData = [
-    { label: "Ruby", value: 1 },
-    { label: "Yenta", value: 2 },
-    { label: "Sage", value: 3 },
+    { label: "Ruby", value: "Ruby" },
+    { label: "Yenta", value: "Yenta" },
+    { label: "Sage", value: "Sage" },
   ];
 
   useEffect(() => {
@@ -52,17 +52,16 @@ export default function ModifyBooking({ navigation }) {
       Alert.alert('Error', 'Please select at least one dancer.');
       return;
     }
-    if (!/^\d+$/.test(id)) {
+    if (!/^\d+$/.test(booking_id)) {
         Alert.alert('Error', 'Booking ID must be a number.');
         return;
     }
   
     // Convert dancers array to a comma-separated string
-    const dancersString = dancers.map(dancer => dancer.toString()).join(',');
+    const dancersString = dancers.map(dancer => dancer).join(',');
   
     const payload = {
-      username: username,
-      id: parseInt(id),
+      booking_id: parseInt(booking_id),
       date: date.toISOString().split('T')[0], // Format date as "YYYY-MM-DD"
       time: time.toISOString().split('T')[1].slice(0, 8), // Format time as "HH:mm:ss"
       dancers: dancersString, // Send dancers as a string
@@ -71,8 +70,8 @@ export default function ModifyBooking({ navigation }) {
     try {
       console.log('Sending request with payload:', payload); // Log payload
   
-      const response = await fetch('http://localhost:8080/index.php/booking/create', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8080/index.php/booking/update', {
+        method: 'PUT',
         credentials: "include",
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +93,7 @@ export default function ModifyBooking({ navigation }) {
   
       if (response.ok) {
         Alert.alert('Booking modified successfully!');
-        navigation.navigate('BookingList');
+        navigation.navigate('LoginLanding');
       } else {
         console.error('Error from API:', data.message || 'Booking modification failed');
         Alert.alert('Error', data.message || 'Booking modification failed');
@@ -126,7 +125,7 @@ export default function ModifyBooking({ navigation }) {
                 <TextInput
                           style={styles.input}
                           placeholder="Enter booking ID"
-                          value={id}
+                          value={booking_id}
                           onChangeText={setid}
                           autoComplete="off"
                           textContentType="none"

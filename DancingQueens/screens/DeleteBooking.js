@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function DeleteBooking({ navigation }) {
   const [username, setUsername] = useState('');
-  const [id, setid] = useState('')
+  const [booking_id, setid] = useState('')
   const [token, setToken] = useState('');
 
 
@@ -29,21 +29,20 @@ export default function DeleteBooking({ navigation }) {
 
 
   const handleDeleteBooking = async () => {
-    if (id == '') {
+    if (booking_id == '') {
       Alert.alert('Error', 'Please list an id');
       return;
     }
   
     const payload = {
-      username: username,
-      id: parseInt(id),
+      booking_id: parseInt(booking_id),
     };
   
     try {
       console.log('Sending request with payload:', payload); // Log payload
   
-      const response = await fetch('http://localhost:8080/index.php/booking/create', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8080/index.php/booking/delete', {
+        method: 'DELETE',
         credentials: "include",
         headers: {
           'Content-Type': 'application/json',
@@ -97,7 +96,7 @@ export default function DeleteBooking({ navigation }) {
         <TextInput
                   style={styles.input}
                   placeholder="Enter booking ID"
-                  value={id}
+                  value={booking_id}
                   onChangeText={setid}
                   autoComplete="off"
                   textContentType="none"

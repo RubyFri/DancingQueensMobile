@@ -24,7 +24,8 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
     time TIME NOT NULL,
     dancers VARCHAR(18),
      FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;```
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    ```
 
 
 ### Rest API Queries (Can be used in Postman or JS)

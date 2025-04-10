@@ -101,9 +101,12 @@ The user can delete bookings that they have created (Delete)
 
 ## Screenshots
 - Sage's XAMPP still does not allow for MySQL, so her queries would not work, but she set up Postman anyway
+Sage:
 ![alt text](get-screenshot-sage.png "Sage's Get Query")
 ![alt text](post-screenshot-sage.png "Sage's Post Query")
+Yenta:
 ![alt text](get-screenshot-yenta.jpeg "Yenta's Get Query")
 ![alt text](post-screenshot-yenta.jpeg "Yenta's Post Query")
+Ruby:
 ![alt text](RubyGet.jpg "Ruby's Get Query")
 ![alt text](RubyPost.png "Ruby's Get Query")

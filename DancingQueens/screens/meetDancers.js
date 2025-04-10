@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity,Linking, Pressable} from 'react-native';
 import { useState,useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -48,6 +48,11 @@ export default function MeetDancers({navigation}) {
         accessibilityLabel="This is a photo of our dancing queen Ruby. 
         She is smiling widely and posing beautifully with one leg up."
       />
+              <Pressable onPress={() => Linking.openURL('https://www.linkedin.com/in/ruby-friedman-04117b301/')}>
+  <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>
+    View Ruby's LinkedIn here!
+  </Text>
+</Pressable>
     <Text style={styles.h2}>Yenta</Text>
       <Text style={styles.p}>Hello! I am Yenta, the queen among dancers. I dance hip hop, ballet, West African, Javanese and Tap.
            I also dance Contemporary, Ballroom and Swing. Oh, and also Tango. Hit me up to book.</Text>
@@ -57,6 +62,12 @@ export default function MeetDancers({navigation}) {
         accessibilityLabel="This is a photo of our dancing queen Yenta. 
         She is smiling widely and posing beautifully with one leg up."
       />
+
+<Pressable onPress={() => Linking.openURL('https://play2048.co')}>
+  <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>
+    View Yenta's favorite game here!
+  </Text>
+</Pressable>
 
     <Text style={styles.h2}>Sage</Text>
       <Text style={styles.p}>Hi I'm Sage! I'm a junior at Wesleyan University majoring in Math and Computer Science.
@@ -68,6 +79,11 @@ export default function MeetDancers({navigation}) {
         accessibilityLabel="This is a photo of our dancing queen Sage. 
         She is smiling widely and posing beautifully with one leg up."
       />
+      <Pressable onPress={() => Linking.openURL('https://www.instagram.com/saltman8345/')}>
+  <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>
+    View Sage's instagram here!
+  </Text>
+</Pressable>
 
 
     </View>

@@ -65,6 +65,7 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
 
 ### Expo
 - Navigate through the terminal such that the DancingQueens folder is the active directory
+- Run 'npx create-expo-app@latest' and when prompted for app name type 'DancingQueens'
 - Run 'npx expo start' to run expo (if you get an error and need to install dependencies, run the install command that expo lists)
 - View the app in whichever environment you choose (I ran it by scanning the QR code and opening it in Expo Go on my iPhone)
 

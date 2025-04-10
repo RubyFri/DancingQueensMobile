@@ -63,11 +63,35 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
  	No body
 
 
-### Expo
-- Navigate through the terminal such that the DancingQueens folder is the active directory
-- Run 'npx create-expo-app@latest' and when prompted for app name type 'DancingQueens'
-- Run 'npx expo start' to run expo (if you get an error and need to install dependencies, run the install command that expo lists)
-- View the app in whichever environment you choose (I ran it by scanning the QR code and opening it in Expo Go on my iPhone)
+### Running the ios simulator
+To run our app using your already downloaded ios simulator do the following once you have set up your local backend
+- clone this repository on to your computer using the following command
+
+  ```Git clone https://github.com/RubyFri/DancingQueensMobile.git```
+  
+- Navigate to the Dancing Queens directory using the following commands
+
+  ```cd DancingQueensMobile/DancingQueens/```
+  
+- install npm to get all of the relevant Node.js packages
+
+   ```npm install```
+  
+- Finally start the ios simulator
+
+   ```npx expo start --ios```
+
+This should begin the ios simulation!
+
+Please feel free to create an account and log in to view the CRUD functionality. 
+
+The user can create bookings (Create)
+
+All bookings of all users are listed once the user logs in. (Read)
+
+The user can modify bookings that they have created (Update)
+
+The user can delete bookings that they have created (Delete)
 
 
 ### Notes on Use

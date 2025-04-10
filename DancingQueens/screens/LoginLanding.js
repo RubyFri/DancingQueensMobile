@@ -99,12 +99,9 @@ export default function LoginLanding({ navigation }) {
         />
     <ScrollView>    
     <View style = {styles.row} /* The CUD functionality */> 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateBooking')}>
-        <Text style={styles.buttonText}>Create Booking</Text> </TouchableOpacity> 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('DeleteBooking')}>
-            <Text style={styles.buttonText}>Delete Booking</Text> </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ModifyBooking')}>
-            <Text style={styles.buttonText}>Modify Booking</Text> </TouchableOpacity>
+    <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('CreateBooking')}><Text style = {styles.buttonText}>Create Booking</Text></TouchableOpacity>
+    <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('ModifyBooking')}><Text style = {styles.buttonText}>Modify Booking</Text></TouchableOpacity>
+    <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('DeleteBooking')}><Text style = {styles.buttonText}>Delete Booking</Text></TouchableOpacity>
     </View>
     </ScrollView>  
         <StatusBar style="auto" />

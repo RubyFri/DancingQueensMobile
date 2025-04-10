@@ -38,7 +38,7 @@ export default function Login({ navigation }) {
               Alert.alert('Login failed', data.message || 'Wrong User id or password');
             }
           } catch (error) {
-            console.error('Login Error:', error);
+            //console.error('Login Error:', error);
             Alert.alert('Error', 'Something went wrong. Try again later.');
           }
         };

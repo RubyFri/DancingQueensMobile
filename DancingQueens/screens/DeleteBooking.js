@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function DeleteBooking({ navigation }) {
   const [username, setUsername] = useState('');
-  const [id, setid] = useState('')
+  const [booking_id, setid] = useState('')
   const [token, setToken] = useState('');
 
 
@@ -21,7 +21,7 @@ export default function DeleteBooking({ navigation }) {
           setToken(storedToken);
         }
       } catch (error) {
-        console.error('Error loading user data:', error);
+        //console.error('Error loading user data:', error);
       }
     };
     loadUser();
@@ -29,21 +29,20 @@ export default function DeleteBooking({ navigation }) {
 
 
   const handleDeleteBooking = async () => {
-    if (id == '') {
+    if (booking_id == '') {
       Alert.alert('Error', 'Please list an id');
       return;
     }
   
     const payload = {
-      username: username,
-      id: parseInt(id),
+      booking_id: parseInt(booking_id),
     };
   
     try {
-      console.log('Sending request with payload:', payload); // Log payload
+      //console.log('Sending request with payload:', payload); // Log payload
   
-      const response = await fetch('http://localhost:8080/index.php/booking/create', {
-        method: 'POST',
+      const response = await fetch('http://localhost:8080/index.php/booking/delete', {
+        method: 'DELETE',
         credentials: "include",
         headers: {
           'Content-Type': 'application/json',
@@ -52,26 +51,26 @@ export default function DeleteBooking({ navigation }) {
       });
   
       const responseText = await response.text();
-      console.log('Raw response:', responseText); // Log the raw response
+      //console.log('Raw response:', responseText); // Log the raw response
   
       let data;
       try {
         data = JSON.parse(responseText); // Try to parse JSON response
       } catch (error) {
-        console.error('Invalid JSON response:', responseText); // Log invalid response
-        Alert.alert('Error', 'Something went wrong while deleting the booking.');
+        //console.error('Invalid JSON response:', responseText); // Log invalid response
+        Alert.alert('Error', 'You can only delete your own bookings.');
         return;
       }
   
       if (response.ok) {
         Alert.alert('Booking deleted successfully!');
-        navigation.navigate('BookingList');
+        navigation.navigate('LoginLanding');
       } else {
-        console.error('Error from API:', data.message || 'Booking deletion failed');
+        //console.error('Error from API:', data.message || 'Booking deletion failed');
         Alert.alert('Error', data.message || 'Booking deletion failed');
       }
     } catch (error) {
-      console.error('API Error:', error); // Log the error to identify the issue
+      //console.error('API Error:', error); // Log the error to identify the issue
       Alert.alert('Error', 'Something went wrong. Please try again later.');
     }
   };
@@ -97,7 +96,7 @@ export default function DeleteBooking({ navigation }) {
         <TextInput
                   style={styles.input}
                   placeholder="Enter booking ID"
-                  value={id}
+                  value={booking_id}
                   onChangeText={setid}
                   autoComplete="off"
                   textContentType="none"

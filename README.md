@@ -73,3 +73,13 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
 ### Notes on Use
 - Access to CRUD functionality is through the Login Landing page, available once you have created an account and logged in
 - When choosing dancers during Create or Modify Booking, remember to tap elsewhere on the page to close the MultiPicker before pressing the button
+
+
+## Screenshots
+- Sage's XAMPP still does not allow for MySQL, so her queries would not work, but she set up Postman anyway
+![alt text](get-screenshot-sage.png "Sage's Get Query")
+![alt text](post-screenshot-sage.png "Sage's Post Query")
+![alt text](get-screenshot-yenta.jpeg "Yenta's Get Query")
+![alt text](post-screenshot-yenta.jpeg "Yenta's Post Query")
+![alt text](RubyGet.jpg "Ruby's Get Query")
+![alt text](RubyPost.png "Ruby's Get Query")

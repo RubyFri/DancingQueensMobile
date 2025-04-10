@@ -48,16 +48,16 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
     {  "date": "2027-07-30",
        "time": "14:30:00",
        "dancers": "yenta"}
-- Modify booking: (must be logged in, users can only modify their own bookings) 
+- Modify booking: (must be logged in, users can only modify their own bookings, booking id must exist) 
     Endpoint: PUT http://localhost:8080/index.php/booking/update
     {  "booking_id": "1",
        "date": "2027-07-30",
        "time": "14:30:00",
        "dancers": "yenta"}
-- Delete Booking: 
+- Delete Booking: (must be logged in, users can only modify their own bookings, booking id must exist) 
     Endpoint: DELETE http://localhost:8080/index.php/booking/delete
 	{  "booking_id": "1"}
-- List the bookings:
+- List the bookings: (must be logged in)
     Endpoint: GET http://localhost:8080/index.php/booking/list?limit=20. Note: we specify a limit (we dont want to list 1000 bookings)
  	No body
 

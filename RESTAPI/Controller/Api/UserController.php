@@ -7,7 +7,6 @@ class UserController extends BaseController
 */
     public function listAction()
     {
-        authenticate();
         $strErrorDesc = '';
         $requestMethod = $_SERVER["REQUEST_METHOD"];
         $arrQueryStringParams = $this->getQueryStringParams();

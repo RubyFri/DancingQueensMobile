@@ -1,0 +1,1 @@
+{"version":1,"defects":{"StackTest::testGet_UserList":8,"StackTest::testPost_CreateUser":8,"StackTest::testPost_LoginUser":7,"StackTest::testPost_FailedLogin":8},"times":{"StackTest::testGet_UserList":0.025,"StackTest::testPost_CreateUser":0.107,"StackTest::testPost_LoginUser":0.074,"StackTest::testPost_FailedLogin":0.004}}

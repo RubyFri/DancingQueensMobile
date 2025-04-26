@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Image, Linking, Pressable, TouchableOpacity } from 'react-native';
 import { useState,useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AnimatedImage from './AnimatedImage';
 
 
 export default function Home({ navigation }) {

@@ -9,6 +9,8 @@ import LoginLanding from './screens/LoginLanding';
 import CreateBooking from './screens/CreateBooking';
 import DeleteBooking from './screens/DeleteBooking';
 import ModifyBooking from './screens/ModifyBooking';
+import CreateVRDance from './screens/CreateVRDance';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +26,7 @@ export default function App() {
         <Stack.Screen name="LoginLanding" component={LoginLanding} />
         <Stack.Screen name="DeleteBooking" component={DeleteBooking} />
         <Stack.Screen name="ModifyBooking" component={ModifyBooking} />
+        <Stack.Screen name="CreateVRDance" component={CreateVRDance} />
       </Stack.Navigator>
     </NavigationContainer>
   );

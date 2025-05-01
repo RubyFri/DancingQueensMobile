@@ -41,9 +41,7 @@ export default function ViewVDs({ navigation }) {
       for (i of poses) {
         const filename = `${item.dancers}Pose${i}`;
             try {
-              paths.push({
-                items: pathDatabase[filename]
-              });
+              paths.push(pathDatabase[filename]);
             } catch (error) {
               console.warn(`Missing image: ${filename}`);
             }

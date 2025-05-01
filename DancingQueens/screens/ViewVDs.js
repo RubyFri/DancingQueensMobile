@@ -8,14 +8,41 @@ import AnimatedImage from './AnimatedImage';
 export default function ViewVDs({ navigation }) {
     const [dances, setDances] = useState([]);
 
+    const pathDatabase = {
+      'RubyPose1' : require('../assets/poses/RubyPose1.heic'),
+      'RubyPose2' : require('../assets/poses/RubyPose2.heic'),
+      'RubyPose3' : require('../assets/poses/RubyPose3.heic'),
+      'RubyPose4' : require('../assets/poses/RubyPose4.heic'),
+      'RubyPose5' : require('../assets/poses/RubyPose5.heic'),
+      'RubyPose6' : require('../assets/poses/RubyPose6.heic'),
+      'RubyPose7' : require('../assets/poses/RubyPose7.heic'),
+      'RubyPose8' : require('../assets/poses/RubyPose8.heic'),
+      'RubyPose9' : require('../assets/poses/RubyPose9.heic'),
+      'SagePose1' : require('../assets/poses/SagePose1.heic'),
+      'SagePose2' : require('../assets/poses/SagePose2.heic'),
+      'SagePose3' : require('../assets/poses/SagePose3.heic'),
+      'SagePose4' : require('../assets/poses/SagePose4.heic'),
+      'SagePose5' : require('../assets/poses/SagePose5.heic'),
+      'SagePose6' : require('../assets/poses/SagePose6.heic'),
+      'SagePose7' : require('../assets/poses/SagePose7.heic'),
+      'YentaPose1' : require('../assets/poses/YentaPose1.heic'),
+      'YentaPose2' : require('../assets/poses/YentaPose2.heic'),
+      'YentaPose3' : require('../assets/poses/YentaPose3.heic'),
+      'YentaPose4' : require('../assets/poses/YentaPose4.heic'),
+      'YentaPose5' : require('../assets/poses/YentaPose5.heic'),
+      'YentaPose6' : require('../assets/poses/YentaPose6.heic'),
+      'YentaPose7' : require('../assets/poses/YentaPose7.heic'),
+    }
+
+
     const toPaths = (item) => {
       const paths = [];
       const poses = item.poses.split(',').map(Number);
       for (i of poses) {
-        const filename = `${item.dancers}Pose${i}.png`;
+        const filename = `${item.dancers}Pose${i}`;
             try {
               paths.push({
-                items: '../assets/poses/${filename}'
+                items: pathDatabase[filename]
               });
             } catch (error) {
               console.warn(`Missing image: ${filename}`);

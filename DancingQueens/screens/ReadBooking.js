@@ -41,7 +41,14 @@ export default function LoginLanding({ navigation }) {
                     }
                     //console.log(response);
                     if (response.ok) {
-                        setBookings(data); // Where data is an array of bookings
+                          // Filter bookings to only include those with a date after the current date
+                        const currentDate = new Date(); // Get the current date
+                        const filteredBookings = data.filter(booking => {
+                            const bookingDate = new Date(booking.date); // Convert booking date to a Date object
+                            return bookingDate >= currentDate; // Only include bookings with a future date
+                        });
+                        console.log(filteredBookings);
+                        setBookings(filteredBookings); // Where data is an array of bookings
                     } else {
                         Alert.alert('Error fetching bookings', 'Could not retrieve bookings.');
                     }

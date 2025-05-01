@@ -115,6 +115,7 @@ export default function ModifyBooking({ navigation }) {
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MeetDancers')}>
             <Text style={styles.buttonText}>Meet Our Dancers!</Text>
           </TouchableOpacity>
+          <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('ViewVDs')}><Text style = {styles.buttonText}>Virtual Dances</Text></TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LoginLanding')}>
             <Text style={styles.buttonText}>My Profile</Text>
           </TouchableOpacity>

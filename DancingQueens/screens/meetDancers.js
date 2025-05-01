@@ -25,6 +25,7 @@ export default function MeetDancers({navigation}) {
         {isLoggedIn && (
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('LoginLanding')}><Text style = {styles.buttonText}>My Profile</Text></TouchableOpacity>
       )} 
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('ViewVDs')}><Text style = {styles.buttonText}>Virtual Dances</Text></TouchableOpacity>
       {!isLoggedIn && (
         <>
           <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CreateAcc')}>

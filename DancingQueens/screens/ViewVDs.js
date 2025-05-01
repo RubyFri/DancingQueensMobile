@@ -41,6 +41,7 @@ export default function ViewVDs({ navigation }) {
       for (i of poses) {
         const filename = `${item.dancers}Pose${i}`;
             try {
+              console.log(filename)
               paths.push(pathDatabase[filename]);
             } catch (error) {
               console.warn(`Missing image: ${filename}`);
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 5,
         elevation: 3,
-        
+
       },
       bookingText: {
         fontSize: 16,

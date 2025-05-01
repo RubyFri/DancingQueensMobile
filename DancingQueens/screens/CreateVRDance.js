@@ -75,17 +75,19 @@ export default function CreateVRDance({ navigation }) {
 
       setPoses(allPoses);
     };
-
-    const togglePose = (pose) => {
-      setPoses((prev) =>
-        prev.map((p) =>
-          p.filename === pose.filename ? { ...p, selected: !p.selected } : p
-        )
-      );
-    };
-
+    
     generatePoseList();
   }, [dancers]);
+
+  const togglePose = (selectedPose) => {
+    const updatedPoses = poses.map((pose) => {
+      if (pose.filename === selectedPose.filename && pose.dancer === selectedPose.dancer) {
+        return { ...pose, selected: !pose.selected };
+      }
+      return pose;
+    });
+    setPoses(updatedPoses);
+  };
 
   const handleCreateBooking = async () => {
     if (dancers.length === 0) {
@@ -193,9 +195,10 @@ export default function CreateVRDance({ navigation }) {
                 <TouchableOpacity key={index} onPress={() => togglePose(pose)} style={{ margin: 5 }}>
                   <Image
                     source={pose.uri}
+                    resizeMode="contain"
                     style={{
-                      width: 100,
-                      height: 100,
+                      width: 150,
+                      height: 300,
                       borderWidth: 3,
                       borderColor: pose.selected ? 'green' : 'transparent',
                       borderRadius: 10,

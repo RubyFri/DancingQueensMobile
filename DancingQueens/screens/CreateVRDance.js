@@ -123,7 +123,7 @@ export default function CreateVRDance({ navigation }) {
       });
 
       const responseText = await response.text();
-      console.log('Raw response:', responseText); // Log the raw response
+      //console.log('Raw response:', responseText); // Log the raw response
 
       let data;
       try {
@@ -136,7 +136,7 @@ export default function CreateVRDance({ navigation }) {
 
       if (response.ok) {
         Alert.alert('Dance created successfully!');
-        navigation.navigate('LoginLanding');
+        navigation.navigate('ViewVDs');
       } else {
         //console.error('Error from API:', data.message || 'Booking creation failed');
         Alert.alert('Error', data.message || 'Booking creation failed');

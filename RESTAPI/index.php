@@ -46,6 +46,10 @@ switch ($uri[1]) {
         require PROJECT_ROOT_PATH . "/Controller/Api/LoginLogoutController.php";
         $objController = new LoginLogoutController();
         break;
+    case 'dances':
+        require PROJECT_ROOT_PATH . "/Controller/Api/DancesController.php";
+        $objController = new DancesController();
+        break;
     default:
         header("HTTP/1.1 404 Not Found");
         echo json_encode(["error" => "Invalid API endpoint"]);

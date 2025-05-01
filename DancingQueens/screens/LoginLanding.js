@@ -10,53 +10,27 @@ export default function LoginLanding({ navigation }) {
     const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
-        const loadData = async () => {
-            try {
-                // Get the stored username and session ID
-                const storedUsername = await AsyncStorage.getItem('username');
-                const storedSessionId = await AsyncStorage.getItem('session_id');
+      const loadData = async () => {
+        try {
+          const storedUsername = await AsyncStorage.getItem('username');
+          const storedSessionId = await AsyncStorage.getItem('session_id');
     
-                if (storedUsername && storedSessionId) {
-                    setUsername(storedUsername);
-                    setSessionId(storedSessionId);
+          if (storedUsername && storedSessionId) {
+            setUsername(storedUsername);
+            setSessionId(storedSessionId);
+          } else {
+            Alert.alert('Session expired', 'Please log in again.');
+            navigation.navigate('Login');
+          }
+        } catch (error) {
+          Alert.alert('Error', 'Something went wrong while loading your session.');
+        }
+      };
     
-                    // Fetch bookings after setting the session ID
-                    const response = await fetch('http://localhost:8080/index.php/booking/list?limit=30', {
-                        method: 'GET',
-                        credentials:"include"
-                    });
+      loadData();
+    }, [navigation]);
 
-                    //console.log(response);
-                    const responseText = await response.text(); // Get the response as text first
-    
-                    // Try to parse the response as JSON
-                    let data;
-                    try {
-                        data = JSON.parse(responseText);
-                    } catch (error) {
-                        // Handle invalid JSON response (i.e., error message)
-                        //console.error("Invalid JSON response:", responseText);
-                        Alert.alert('Error', 'Something went wrong while loading your data.');
-                        return;
-                    }
-                    //console.log(response);
-                    if (response.ok) {
-                        setBookings(data); // Where data is an array of bookings
-                    } else {
-                        Alert.alert('Error fetching bookings', 'Could not retrieve bookings.');
-                    }
-                } else {
-                    Alert.alert('Session expired', 'Please log in again.');
-                    navigation.navigate('Login');
-                }
-            } catch (error) {
-                //console.error('Error:', error);
-                Alert.alert('Error', 'Something went wrong while loading your data.');
-            }
-        };
-    
-        loadData();
-    }, [navigation])
+
     const handleLogout = async () => {
       try {
         await AsyncStorage.removeItem('username');
@@ -92,17 +66,15 @@ export default function LoginLanding({ navigation }) {
   You are currently logged in as {String(username || '[Unknown]')}
 </Text>
 
-        <FlatList 
-          data={bookings}
-          renderItem={renderBookingItem}
-          keyExtractor={(item) => item.booking_id.toString()}
-        />
+
     <ScrollView>    
     <View style = {styles.row} /* The CUD functionality */> 
-    <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('CreateBooking')}><Text style = {styles.buttonText}>Create Booking</Text></TouchableOpacity>
-    <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('ModifyBooking')}><Text style = {styles.buttonText}>Modify Booking</Text></TouchableOpacity>
-    <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('DeleteBooking')}><Text style = {styles.buttonText}>Delete Booking</Text></TouchableOpacity>
-    <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('CreateVRDance')}><Text style = {styles.buttonText}>Create Virtual Dance</Text></TouchableOpacity>
+    <TouchableOpacity style={styles.bottomButton} onPress={() => navigation.navigate('ReadBooking')}><Text style={styles.bottomButtonText}>View All Users Bookings</Text></TouchableOpacity>
+    <TouchableOpacity style = {styles.bottomButton} onPress={() => navigation.navigate('CreateBooking')}><Text style = {styles.bottomButtonText}>Create Booking</Text></TouchableOpacity>
+    <TouchableOpacity style = {styles.bottomButton} onPress={() => navigation.navigate('ModifyBooking')}><Text style = {styles.bottomButtonText}>Modify Booking</Text></TouchableOpacity>
+    <TouchableOpacity style = {styles.bottomButton} onPress={() => navigation.navigate('DeleteBooking')}><Text style = {styles.bottomButtonText}>Delete Booking</Text></TouchableOpacity>
+    <TouchableOpacity style = {styles.bottomButton} onPress={() => navigation.navigate('CreateVRDance')}><Text style = {styles.bottomButtonText}>Create Virtual Dance</Text></TouchableOpacity>
+
     </View>
     </ScrollView>  
         <StatusBar style="auto" />
@@ -180,5 +152,26 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#333',
         marginBottom: 5,
+      },
+
+      bottomButton: {
+        backgroundColor: '#B6E2A1',
+        paddingVertical: 20,
+        paddingHorizontal: 30,
+        margin: 10,
+        borderRadius: 12,
+        borderWidth: 2,
+        borderColor: '#4CAF50',
+        shadowColor: '#000',
+        shadowOffset: { width: 2, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+        elevation: 4,
+        alignItems: 'center',
+      },
+      bottomButtonText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: '#2C5F2D',
       },
 });

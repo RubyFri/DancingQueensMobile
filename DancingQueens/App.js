@@ -10,6 +10,8 @@ import CreateBooking from './screens/CreateBooking';
 import DeleteBooking from './screens/DeleteBooking';
 import ModifyBooking from './screens/ModifyBooking';
 import CreateVRDance from './screens/CreateVRDance';
+import ReadBooking from './screens/ReadBooking';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -27,6 +29,7 @@ export default function App() {
         <Stack.Screen name="DeleteBooking" component={DeleteBooking} />
         <Stack.Screen name="ModifyBooking" component={ModifyBooking} />
         <Stack.Screen name="CreateVRDance" component={CreateVRDance} />
+        <Stack.Screen name="ReadBooking" component={ReadBooking} />
       </Stack.Navigator>
     </NavigationContainer>
   );

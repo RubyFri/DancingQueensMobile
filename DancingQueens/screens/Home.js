@@ -26,6 +26,7 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
       <View style = {styles.row} /* The Navbar */> 
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('ViewVDs')}><Text style = {styles.buttonText}>Virtual Dances</Text></TouchableOpacity>
 
         {!isLoggedIn && (
         <>

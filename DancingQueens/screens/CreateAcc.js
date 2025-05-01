@@ -70,6 +70,7 @@ export default function CreateAcc({ navigation }) {
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Home')}><Text style = {styles.buttonText}>Home</Text></TouchableOpacity>
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('MeetDancers')}><Text style = {styles.buttonText}>Meet Our Dancers!</Text></TouchableOpacity>
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('Login')}><Text style = {styles.buttonText}>Login</Text></TouchableOpacity>
+        <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('ViewVDs')}><Text style = {styles.buttonText}>Virtual Dances</Text></TouchableOpacity>
         {isLoggedIn && (
         <TouchableOpacity style = {styles.button} onPress={() => navigation.navigate('LoginLanding')}><Text style = {styles.buttonText}>My Profile</Text></TouchableOpacity>
       )}   

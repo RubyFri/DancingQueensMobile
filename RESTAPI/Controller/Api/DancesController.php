@@ -52,15 +52,16 @@ class DancesController extends BaseController
                
                 $username = $_SESSION['username'];
                  // Extract username, date, time and password from POST data
-                $dance = isset($userData['dance']) ? $userData['dance'] : null;
+                $poses = isset($userData['poses']) ? $userData['poses'] : null;
+                $dancers = isset($userData['dancers']) ? $userData['dancers'] : null;
 
                 //Validate the received data
-                if (empty($username) || empty($dance)) {
+                if (empty($poses) || empty($username) || empty($dancers)) {
                     throw new Exception("Username and dance required.");
                 }
 
                 $dancesModel = new DancesModel();
-                $result = $dancesModel->createDance($username, $dance);
+                $result = $dancesModel->createDance($username, $dancers, $poses);
 
                 if ($result) {
                     $this->sendOutput(

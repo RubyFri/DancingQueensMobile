@@ -6,9 +6,9 @@ class DancesModel extends Database {
         return $this->select("SELECT * FROM dances ORDER BY dance_id");
     }
      // Returns a PDO statement object (`$stmt`) after executing the query.
-     public function createDance($username, $dance) {
+     public function createDance($username,  $dancers, $poses) {
         // Insert the new booking into the database
-        $query = "INSERT INTO dances (username, dance) VALUES (?, ?)";
-        return $this->executeStatement($query, [$username, $dance]);
+        $query = "INSERT INTO dances (username, dancers, poses) VALUES (?, ?, ?)";
+        return $this->executeStatement($query, [$username, $dancers, $poses]);
       }
 }

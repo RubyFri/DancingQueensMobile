@@ -10,7 +10,8 @@ export default function ViewVDs({ navigation }) {
 
     const toPaths = (item) => {
       const paths = [];
-      for (i of item.poses) {
+      const poses = item.poses.split(',').map(Number);
+      for (i of poses) {
         const filename = `${item.dancers}Pose${i}.png`;
             try {
               paths.push({

@@ -82,7 +82,7 @@ export default function ViewVDs({ navigation }) {
         }
         //console.log(response);
         if (response.ok) {
-          setDances(data); // Where data is an array of dances
+          setDances(data.reverse()); // Where data is an array of dances
         } else {
           Alert.alert(
             "Error fetching dances",

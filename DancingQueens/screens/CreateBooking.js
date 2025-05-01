@@ -118,7 +118,7 @@ export default function CreateBooking({ navigation }) {
         <Text style={styles.heading1}>CREATE BOOKING</Text>
 
         <Text style={styles.p}>Booking Date</Text>
-        <DateTimePicker value={date} style={styles.input} mode="date" display="default" onChange={onDateChange} />
+        <DateTimePicker value={date} style={styles.input} mode="date" display="default" onChange={onDateChange} minimumDate={new Date(new Date().setDate(new Date().getDate() + 1))}/>
 
         <Text style={styles.p}>Booking Time</Text>
         <DateTimePicker value={time} style={styles.input} mode="time" display="default" onChange={onTimeChange} />

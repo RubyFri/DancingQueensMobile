@@ -42,33 +42,33 @@ export default function CreateVRDance({ navigation }) {
       dancers.forEach((dancer) => {
         if (dancer === 'Ruby') {
           allPoses.push(
-            { dancer, filename: 'RubyPose1.heic', selected: false, uri: require('./assets/poses/RubyPose1.heic') }, 
-            { dancer, filename: 'RubyPose2.heic', selected: false, uri: require('./assets/poses/RubyPose2.heic') },
-            { dancer, filename: 'RubyPose3.heic', selected: false, uri: require('./assets/poses/RubyPose3.heic') },
-            { dancer, filename: 'RubyPose4.heic', selected: false, uri: require('./assets/poses/RubyPose4.heic') },
-            { dancer, filename: 'RubyPose5.heic', selected: false, uri: require('./assets/poses/RubyPose5.heic') },
-            { dancer, filename: 'RubyPose6.heic', selected: false, uri: require('./assets/poses/RubyPose6.heic') },
-            { dancer, filename: 'RubyPose7.heic', selected: false, uri: require('./assets/poses/RubyPose7.heic') },
+            { dancer, filename: '1', selected: false, uri: require('./assets/poses/RubyPose1.heic') }, 
+            { dancer, filename: '2', selected: false, uri: require('./assets/poses/RubyPose2.heic') },
+            { dancer, filename: '3', selected: false, uri: require('./assets/poses/RubyPose3.heic') },
+            { dancer, filename: '4', selected: false, uri: require('./assets/poses/RubyPose4.heic') },
+            { dancer, filename: '5', selected: false, uri: require('./assets/poses/RubyPose5.heic') },
+            { dancer, filename: '6', selected: false, uri: require('./assets/poses/RubyPose6.heic') },
+            { dancer, filename: '7', selected: false, uri: require('./assets/poses/RubyPose7.heic') },
           );
         } else if (dancer === 'Yenta') {
           allPoses.push(
-            { dancer, filename: 'YentaPose1.heic', selected: false, uri: require('./assets/poses/YentaPose1.heic') },
-            { dancer, filename: 'YentaPose2.heic', selected: false, uri: require('./assets/poses/YentaPose2.heic') },
-            { dancer, filename: 'YentaPose3.heic', selected: false, uri: require('./assets/poses/YentaPose3.heic') },
-            { dancer, filename: 'YentaPose4.heic', selected: false, uri: require('./assets/poses/YentaPose4.heic') },
-            { dancer, filename: 'YentaPose5.heic', selected: false, uri: require('./assets/poses/YentaPose5.heic') },
-            { dancer, filename: 'YentaPose6.heic', selected: false, uri: require('./assets/poses/YentaPose6.heic') },
-            { dancer, filename: 'YentaPose7.heic', selected: false, uri: require('./assets/poses/YentaPose7.heic') },
+            { dancer, filename: '1', selected: false, uri: require('./assets/poses/YentaPose1.heic') },
+            { dancer, filename: '2', selected: false, uri: require('./assets/poses/YentaPose2.heic') },
+            { dancer, filename: '3', selected: false, uri: require('./assets/poses/YentaPose3.heic') },
+            { dancer, filename: '4', selected: false, uri: require('./assets/poses/YentaPose4.heic') },
+            { dancer, filename: '5', selected: false, uri: require('./assets/poses/YentaPose5.heic') },
+            { dancer, filename: '6', selected: false, uri: require('./assets/poses/YentaPose6.heic') },
+            { dancer, filename: '7', selected: false, uri: require('./assets/poses/YentaPose7.heic') },
           );
         } else if (dancer === 'Sage') {
           allPoses.push(
-            { dancer, filename: 'SagePose1.heic', selected: false, uri: require('./assets/poses/SagePose1.heic') },
-            { dancer, filename: 'SagePose2.heic', selected: false, uri: require('./assets/poses/SagePose2.heic') },
-            { dancer, filename: 'SagePose3.heic', selected: false, uri: require('./assets/poses/SagePose3.heic') },
-            { dancer, filename: 'SagePose4.heic', selected: false, uri: require('./assets/poses/SagePose4.heic') },
-            { dancer, filename: 'SagePose5.heic', selected: false, uri: require('./assets/poses/SagePose5.heic') },
-            { dancer, filename: 'SagePose6.heic', selected: false, uri: require('./assets/poses/SagePose6.heic') },
-            { dancer, filename: 'SagePose7.heic', selected: false, uri: require('./assets/poses/SagePose7.heic') },
+            { dancer, filename: '1', selected: false, uri: require('./assets/poses/SagePose1.heic') },
+            { dancer, filename: '2', selected: false, uri: require('./assets/poses/SagePose2.heic') },
+            { dancer, filename: '3', selected: false, uri: require('./assets/poses/SagePose3.heic') },
+            { dancer, filename: '4', selected: false, uri: require('./assets/poses/SagePose4.heic') },
+            { dancer, filename: '5', selected: false, uri: require('./assets/poses/SagePose5.heic') },
+            { dancer, filename: '6', selected: false, uri: require('./assets/poses/SagePose6.heic') },
+            { dancer, filename: '7', selected: false, uri: require('./assets/poses/SagePose7.heic') },
           );
         }
       });
@@ -109,6 +109,7 @@ export default function CreateVRDance({ navigation }) {
 
     };
 
+
     try {
       //console.log('Sending request with payload:', payload); // Log payload
 
@@ -122,13 +123,13 @@ export default function CreateVRDance({ navigation }) {
       });
 
       const responseText = await response.text();
-      //console.log('Raw response:', responseText); // Log the raw response
+      console.log('Raw response:', responseText); // Log the raw response
 
       let data;
       try {
         data = JSON.parse(responseText); // Try to parse JSON response
       } catch (error) {
-        //console.error('Invalid JSON response:', responseText); // Log invalid response
+        console.error('Invalid JSON response:', responseText); // Log invalid response
         Alert.alert('Error', 'Something went wrong while creating the booking.');
         return;
       }
@@ -175,7 +176,10 @@ export default function CreateVRDance({ navigation }) {
           placeholder="Choose Dancers"
           search
           value={dancers}
-          onChange={(item) => setDancers(item)}
+          onChange={(item) => {
+
+            setDancers(item)}
+          }
           multiple
           inside
           renderSelectedItem={(item, unSelect) => (

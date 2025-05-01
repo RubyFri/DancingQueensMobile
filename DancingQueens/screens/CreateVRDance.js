@@ -38,33 +38,52 @@ export default function CreateVRDance({ navigation }) {
   useEffect(() => {
     const generatePoseList = () => {
       const allPoses = [];
+
       dancers.forEach((dancer) => {
-        const count = 7; // assume all dancers have 7 poses
-        for (let i = 1; i <= count; i++) {
-          const filename = `${dancer}Pose${i}.heic`;
-          try {
-            allPoses.push({
-              dancer,
-              filename,
-              selected: false,
-              uri: require(`../assets/poses/${filename}`),
-            });
-          } catch (error) {
-            console.warn(`Missing image: ${filename}`);
-          }
+        if (dancer === 'Ruby') {
+          allPoses.push(
+            { dancer, filename: 'RubyPose1.heic', selected: false, uri: require('./assets/poses/RubyPose1.heic') }, 
+            { dancer, filename: 'RubyPose2.heic', selected: false, uri: require('./assets/poses/RubyPose2.heic') },
+            { dancer, filename: 'RubyPose3.heic', selected: false, uri: require('./assets/poses/RubyPose3.heic') },
+            { dancer, filename: 'RubyPose4.heic', selected: false, uri: require('./assets/poses/RubyPose4.heic') },
+            { dancer, filename: 'RubyPose5.heic', selected: false, uri: require('./assets/poses/RubyPose5.heic') },
+            { dancer, filename: 'RubyPose6.heic', selected: false, uri: require('./assets/poses/RubyPose6.heic') },
+            { dancer, filename: 'RubyPose7.heic', selected: false, uri: require('./assets/poses/RubyPose7.heic') },
+          );
+        } else if (dancer === 'Yenta') {
+          allPoses.push(
+            { dancer, filename: 'YentaPose1.heic', selected: false, uri: require('./assets/poses/YentaPose1.heic') },
+            { dancer, filename: 'YentaPose2.heic', selected: false, uri: require('./assets/poses/YentaPose2.heic') },
+            { dancer, filename: 'YentaPose3.heic', selected: false, uri: require('./assets/poses/YentaPose3.heic') },
+            { dancer, filename: 'YentaPose4.heic', selected: false, uri: require('./assets/poses/YentaPose4.heic') },
+            { dancer, filename: 'YentaPose5.heic', selected: false, uri: require('./assets/poses/YentaPose5.heic') },
+            { dancer, filename: 'YentaPose6.heic', selected: false, uri: require('./assets/poses/YentaPose6.heic') },
+            { dancer, filename: 'YentaPose7.heic', selected: false, uri: require('./assets/poses/YentaPose7.heic') },
+          );
+        } else if (dancer === 'Sage') {
+          allPoses.push(
+            { dancer, filename: 'SagePose1.heic', selected: false, uri: require('./assets/poses/SagePose1.heic') },
+            { dancer, filename: 'SagePose2.heic', selected: false, uri: require('./assets/poses/SagePose2.heic') },
+            { dancer, filename: 'SagePose3.heic', selected: false, uri: require('./assets/poses/SagePose3.heic') },
+            { dancer, filename: 'SagePose4.heic', selected: false, uri: require('./assets/poses/SagePose4.heic') },
+            { dancer, filename: 'SagePose5.heic', selected: false, uri: require('./assets/poses/SagePose5.heic') },
+            { dancer, filename: 'SagePose6.heic', selected: false, uri: require('./assets/poses/SagePose6.heic') },
+            { dancer, filename: 'SagePose7.heic', selected: false, uri: require('./assets/poses/SagePose7.heic') },
+          );
         }
       });
+
       setPoses(allPoses);
     };
 
     const togglePose = (pose) => {
-        setPoses((prev) =>
-          prev.map((p) =>
-            p.filename === pose.filename ? { ...p, selected: !p.selected } : p
-          )
-        );
-      };
-    
+      setPoses((prev) =>
+        prev.map((p) =>
+          p.filename === pose.filename ? { ...p, selected: !p.selected } : p
+        )
+      );
+    };
+
     generatePoseList();
   }, [dancers]);
 
@@ -73,7 +92,7 @@ export default function CreateVRDance({ navigation }) {
       Alert.alert('Error', 'Please select at least one dancer.');
       return;
     }
-  
+
     // Convert dancers array to a comma-separated string
     const dancersString = dancers.join(',');
     const poseString = poses
@@ -87,10 +106,10 @@ export default function CreateVRDance({ navigation }) {
       poses: poseString //send poses as a string of image urls.
 
     };
-  
+
     try {
       //console.log('Sending request with payload:', payload); // Log payload
-  
+
       const response = await fetch('http://localhost:8080/index.php/dances/create', {
         method: 'POST',
         credentials: "include",
@@ -99,10 +118,10 @@ export default function CreateVRDance({ navigation }) {
         },
         body: JSON.stringify(payload),
       });
-  
+
       const responseText = await response.text();
       //console.log('Raw response:', responseText); // Log the raw response
-  
+
       let data;
       try {
         data = JSON.parse(responseText); // Try to parse JSON response
@@ -111,7 +130,7 @@ export default function CreateVRDance({ navigation }) {
         Alert.alert('Error', 'Something went wrong while creating the booking.');
         return;
       }
-  
+
       if (response.ok) {
         Alert.alert('Dance created successfully!');
         navigation.navigate('LoginLanding');
@@ -124,7 +143,7 @@ export default function CreateVRDance({ navigation }) {
       Alert.alert('Error', 'Something went wrong. Please try again later.');
     }
   };
-  
+
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -141,9 +160,6 @@ export default function CreateVRDance({ navigation }) {
           </TouchableOpacity>
         </View>
         <Text style={styles.heading1}>CREATE VIRTUAL DANCE</Text>
-
-        <Text style={styles.p}>Booking Time</Text>
-        <DateTimePicker value={time} style={styles.input} mode="time" display="default" onChange={onTimeChange} />
 
         <MultiSelect
           style={styles.dropdown}

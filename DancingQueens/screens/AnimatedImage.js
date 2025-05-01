@@ -19,7 +19,10 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'center',
       flexWrap: 'wrap',
+      width: 'auto',
+      height: 'auto',
       margin: '10%',
       marginBottom: 20,
+      elevation: 3,
     }
 });

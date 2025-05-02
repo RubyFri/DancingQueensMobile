@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ScrollView, Button, TextInput, Alert, TouchableOpacity, Image } from 'react-native';
 import { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { MultiSelect } from 'react-native-element-dropdown';
+import { Dropdown } from 'react-native-element-dropdown';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function CreateVRDance({ navigation }) {
@@ -164,7 +164,7 @@ export default function CreateVRDance({ navigation }) {
         </View>
         <Text style={styles.heading1}>CREATE VIRTUAL DANCE</Text>
 
-        <MultiSelect
+        <Dropdown
           style={styles.dropdown}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
@@ -177,10 +177,8 @@ export default function CreateVRDance({ navigation }) {
           search
           value={dancers}
           onChange={(item) => {
-
-            setDancers(item)}
-          }
-          multiple
+            setDancers(item);
+          }}
           inside
           renderSelectedItem={(item, unSelect) => (
             <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 10 }}>

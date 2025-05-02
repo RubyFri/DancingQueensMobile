@@ -199,7 +199,7 @@ export default function CreateVRDance({ navigation }) {
               {[1,2,3,4,5,6,7].map((poseNum, index) => (
                 <TouchableOpacity key={index} onPress={() => togglePose(poseNum, dancers)} style={{ margin: 5 }}>
                   <MultiImage
-                    images={[poses.filter((pose) => (pose.filename == poseNum.toString()))]}
+                    images={[poses.filter((pose) => (pose.filename == poseNum.toString()))].map((pose) => pose.uri)}
                   />
                 </TouchableOpacity>
               ))}

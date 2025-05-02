@@ -6,13 +6,13 @@ Work Division: Yenta 33%/Ruby 33%/Sage 33% (Equal)
 We implemented some changes to our original app as well as added additional features so our users have more opportunities to engage with the Dancing Queens.
 
 New implementations:
- - We implemented a new feature on our app so that not only do we offer dancing sessions in person, but we offer virtual dances as well!! Here’s the gist; we added a button ‘Create Virtual Dance’ and when users click on it they get to choose a dancer and specific poses, and the app auto generates a dance! This functionality requires an additional table in the - 
-database and some new react concepts in order to implement.
- - We added a button ‘Virtual Dances’ on the homepage so that anyone can watch the dances that were created by different users.
+ - We implemented a new feature on our app so that not only do we offer dancing sessions in person, but we offer virtual dances as well!! Here’s the gist; we added a button ‘Create Virtual Dance’ and when users click on it they get to choose a dancer and specific poses, and the app auto generates a dance! This functionality requires an additional table in the database and some new react concepts in order to implement.
+ - We added a button ‘Virtual Dances’ on the homepage so that anyone (regardless of their login status) can watch the dances that were created by different users.
 
 Changes:
 - Create Booking: In our original app, users were able to create bookings for dates that have already passed. We changed it so that users can only book for future dates. 
-- View All Users Bookings: in the past, we listed all bookings including past bookings. We edited it so that only future bookings are listed.
+- View All Users Bookings: in the past, we listed all bookings including bookings in which their date had passed. We edited it so that only upcoming bookings are listed.
+- We moved the read functionality off of the login landing page to avoid clutter, it now has its own button
 - Buttons: we upgraded the buttons on the loginlanding homepage to be more aesthetically pleasing.
 
 

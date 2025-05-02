@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { MultiSelect } from 'react-native-element-dropdown';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MultiImage from './MultiImage';
 
 export default function CreateVRDance({ navigation }) {
   const [username, setUsername] = useState('');
@@ -79,9 +80,9 @@ export default function CreateVRDance({ navigation }) {
     generatePoseList();
   }, [dancers]);
 
-  const togglePose = (selectedPose) => {
+  const togglePose = (selectedPose, dancers) => {
     const updatedPoses = poses.map((pose) => {
-      if (pose.filename === selectedPose.filename && pose.dancer === selectedPose.dancer) {
+      if (pose.filename === selectedPose.toString() && pose.dancer === dancers[0]) {
         return { ...pose, selected: !pose.selected };
       }
       return pose;
@@ -195,18 +196,10 @@ export default function CreateVRDance({ navigation }) {
           <>
             <Text style={styles.p}>Select Poses</Text>
             <View style={styles.poseContainer}>
-              {poses.map((pose, index) => (
-                <TouchableOpacity key={index} onPress={() => togglePose(pose)} style={{ margin: 5 }}>
-                  <Image
-                    source={pose.uri}
-                    resizeMode="contain"
-                    style={{
-                      width: 150,
-                      height: 300,
-                      borderWidth: 3,
-                      borderColor: pose.selected ? 'green' : 'transparent',
-                      borderRadius: 10,
-                    }}
+              {[1,2,3,4,5,6,7].map((poseNum, index) => (
+                <TouchableOpacity key={index} onPress={() => togglePose(poseNum, dancers)} style={{ margin: 5 }}>
+                  <MultiImage
+                    images={[poses.filter((pose) => (pose.filename == poseNum.toString()))]}
                   />
                 </TouchableOpacity>
               ))}

@@ -45,6 +45,12 @@ export default function Home({ navigation }) {
       <Text style={styles.heading1}> Feeling <Text style={styles.blueText}>Blue? </Text> 
       Hire Our Crew! We'll Dance For You! 💃 🕺 ✨</Text>
 
+      <AnimatedImage imagePathsArr={[
+        [require('./assets/poses/RubyPose1.heic'), require('./assets/poses/RubyPose2.heic'), require('./assets/poses/RubyPose3.heic')],
+        [require('./assets/poses/SagePose1.heic'), require('./assets/poses/SagePose2.heic'), require('./assets/poses/SagePose3.heic')],
+        [require('./assets/poses/YentaPose1.heic'), require('./assets/poses/YentaPose2.heic'), require('./assets/poses/YentaPose3.heic')]]}
+      />
+
       <Image 
         source={require('./assets/team.jpeg')} // Path to image
         style={styles.image}

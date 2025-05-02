@@ -45,14 +45,20 @@ export default function ViewVDs({ navigation }) {
     const paths = [];
     const poses = item.poses;
     const posesArr = poses.split(",");
-    for (i of posesArr) {
-      const filename = `${item.dancers}Pose${i}`;
-      try {
-        paths.push(pathDatabase[filename]);
-      } catch (error) {
-        console.warn(`Missing image: ${filename}`);
+    const dancers = item.dancers;
+    const dancersArr = dancers.split(",");
+    for (let dancer of dancersArr) {
+      const frames = [];
+      for (let i of posesArr) {
+        const filename = `${dancer}Pose${i}`;
+        try {
+          frames.push(pathDatabase[filename]);
+        } catch (error) {
+          console.warn(`Missing image: ${filename}`);
+        }
       }
-    }
+      paths.push(frames)
+    }  
     return paths;
   };
 
@@ -189,7 +195,7 @@ const styles = StyleSheet.create({
   },
 
   bookingCard: {
-    padding: 15,
+    padding: 5,
     marginVertical: 10,
     backgroundColor: "#fff",
     borderRadius: 8,

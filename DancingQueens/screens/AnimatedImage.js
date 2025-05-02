@@ -8,7 +8,7 @@ export default function AnimatedImage({ imagePathsArr }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagePathsArr[0].length);
-    }, 200);
+    }, 350);
     return () => clearInterval(interval);
   }, [imagePathsArr[0].length]);
 

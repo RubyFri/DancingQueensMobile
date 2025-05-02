@@ -7,24 +7,33 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
 
 ### XAMPP
 - First, place the contents of the RESTAPI folder into your htdocs folder in XAMPP and start your servers.
-- In MySQL, create a database titled mobile-app-db, then add two tables two it with the following queries:
+- In MySQL, create a database titled mobile-app-db, then add three tables to it with the following queries:
 
     ```
     CREATE TABLE users (
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    UNIQUE (username),
-    PRIMARY KEY(username)
-    )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	    username VARCHAR(255) NOT NULL,
+	    password VARCHAR(255) NOT NULL,
+	    UNIQUE (username),
+	    PRIMARY KEY(username)
+	    )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
     CREATE TABLE bookings (
-    booking_id INT(11) AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255),
-    date DATE NOT NULL,
-    time TIME NOT NULL,
-    dancers VARCHAR(18),
-     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+	    booking_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+	    username VARCHAR(255),
+	    date DATE NOT NULL,
+	    time TIME NOT NULL,
+	    dancers VARCHAR(18),
+	     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE
+	    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+    CREATE table dances(
+	  dance_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+	  username VARCHAR (255)NOT NULL,
+	  dancers TEXT NOT NULL,
+	  poses TEXT NOT NULL,
+	  FOREIGN KEY (username) REFERENCES users(username)
+	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
     ```
 
 

@@ -23,6 +23,8 @@ export default function ViewVDs({ navigation }) {
     RubyPose5: require("./assets/poses/RubyPose5.heic"),
     RubyPose6: require("./assets/poses/RubyPose6.heic"),
     RubyPose7: require("./assets/poses/RubyPose7.heic"),
+    RubyPose8: require("./assets/poses/RubyPose8.heic"),
+    RubyPose9: require("./assets/poses/RubyPose9.heic"),
     SagePose1: require("./assets/poses/SagePose1.heic"),
     SagePose2: require("./assets/poses/SagePose2.heic"),
     SagePose3: require("./assets/poses/SagePose3.heic"),
@@ -43,20 +45,14 @@ export default function ViewVDs({ navigation }) {
     const paths = [];
     const poses = item.poses;
     const posesArr = poses.split(",");
-    const dancers = item.dancers;
-    const dancersArr = dancers.split(",");
-    for (let dancer of dancersArr) {
-      const frames = [];
-      for (let i of posesArr) {
-        const filename = `${dancer}Pose${i}`;
-        try {
-          frames.push(pathDatabase[filename]);
-        } catch (error) {
-          console.warn(`Missing image: ${filename}`);
-        }
+    for (i of posesArr) {
+      const filename = `${item.dancers}Pose${i}`;
+      try {
+        paths.push(pathDatabase[filename]);
+      } catch (error) {
+        console.warn(`Missing image: ${filename}`);
       }
-      paths.push(frames)
-    }  
+    }
     return paths;
   };
 
@@ -86,7 +82,7 @@ export default function ViewVDs({ navigation }) {
         }
         //console.log(response);
         if (response.ok) {
-          setDances(data.reverse()); // Where data is an array of dances
+          setDances(data); // Where data is an array of dances
         } else {
           Alert.alert(
             "Error fetching dances",
@@ -107,7 +103,7 @@ export default function ViewVDs({ navigation }) {
   ) => (
     <View style={styles.bookingCard}>
       <Text style={styles.bookingText}>Created by {item.username}</Text>
-      <AnimatedImage imagePathsArr={toPaths(item)} />
+      <AnimatedImage imagePaths={toPaths(item)} />
     </View>
   );
 
@@ -193,7 +189,7 @@ const styles = StyleSheet.create({
   },
 
   bookingCard: {
-    padding: 5,
+    padding: 15,
     marginVertical: 10,
     backgroundColor: "#fff",
     borderRadius: 8,

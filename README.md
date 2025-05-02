@@ -27,12 +27,12 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
 	    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
     CREATE table dances(
-	  dance_id INT(11) AUTO_INCREMENT PRIMARY KEY,
-	  username VARCHAR (255)NOT NULL,
-	  dancers TEXT NOT NULL,
-	  poses TEXT NOT NULL,
-	  FOREIGN KEY (username) REFERENCES users(username)
-	) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+		dance_id INT(11) AUTO_INCREMENT PRIMARY KEY,
+		username VARCHAR (255)NOT NULL,
+		dancers TEXT NOT NULL,
+		poses TEXT NOT NULL,
+		FOREIGN KEY (username) REFERENCES users(username)
+		) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
     ```
 
@@ -70,6 +70,13 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
 - List the bookings: (must be logged in)
     Endpoint: GET http://localhost:8080/index.php/booking/list?limit=20. Note: we specify a limit (we dont want to list 1000 bookings)
  	No body
+- List the Dances: (no need to be logged in)
+    Endpoint: GET http://localhost:8080/index.php/dances/list
+- Create a dance: (must be logged in)
+    Endpoint: POST http://localhost:8080/index.php/dances/create
+	{ "username": "project4",
+	   "dancers": "Ruby",
+	   "poses": "1,2,3" }
 
 
 ### Running the ios simulator
@@ -102,10 +109,15 @@ The user can modify bookings that they have created (Update)
 
 The user can delete bookings that they have created (Delete)
 
+The user can create a virtual dance (Create)
+
+The user can view dances that other dancers have created (Read)
+
 
 ### Notes on Use
 - Access to CRUD functionality is through the Login Landing page, available once you have created an account and logged in
 - When choosing dancers during Create or Modify Booking, remember to tap elsewhere on the page to close the MultiPicker before pressing the button
+- When creating a virutal dance, select the poses you would like to be included in the dance and scroll all the way down to submit. Once submitted, you can view it by navigating to the 'Virtual Dances' button.
 
 
 ## Screenshots

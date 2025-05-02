@@ -1,6 +1,6 @@
 # DancingQueensMobile
 The dancing queens is coming to iOS and android near you!
-Work Division: Yenta 35%/Ruby 35%/Sage 30%
+Work Division: Yenta 33%/Ruby 33%/Sage 33% (Equal)
 
 
 ## To Set Up Environment
@@ -78,6 +78,26 @@ Work Division: Yenta 35%/Ruby 35%/Sage 30%
 	   "dancers": "Ruby",
 	   "poses": "1,2,3" }
 
+### Running the unit tests
+To run the unit tests navigate from the root directory to RESTAPI
+
+```cd RESTAPI```
+
+Ensure that your backend is set up before doing this by refering to the Xampp tutorial to set up your local enviornment
+
+Download all the dependancies listed in the <strong> PHPUnit backend unit tests </strong> section through step 6.
+From there, navigate to test-project
+
+```cd test-project```
+
+and run the tests 
+
+```php vendor/bin/phpunit tests```
+
+### Discussion on Generative AI tools and testing of the app
+
+We wanted to test to what extent generative AI specifically ChatGPT in our case was able to write successful unit tests for us. So we sent them the following query: Here is our current unit testing code (we pasted the entirety of our StackTest.py file) using this, cam you write more unit test
+
 
 ### Running the ios simulator
 To run our app using your already downloaded ios simulator do the following once you have set up your local backend
@@ -98,6 +118,8 @@ To run our app using your already downloaded ios simulator do the following once
    ```npx expo start --ios```
 
 This should begin the ios simulation!
+
+
 
 Please feel free to create an account and log in to view the CRUD functionality. 
 

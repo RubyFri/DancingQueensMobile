@@ -1,18 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Image } from "react-native";
-import MultiImage from "./MultiImage";
 
-export default function AnimatedImage({ imagePathsArr }) {
+export default function AnimatedImage({ imagePaths }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagePathsArr[0].length);
-    }, 350);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imagePaths.length);
+    }, 200);
     return () => clearInterval(interval);
-  }, [imagePathsArr[0].length]);
+  }, [imagePaths.length]);
 
   return (
-    <MultiImage images={imagePathsArr.map((paths) => (paths[currentImageIndex]))}/>
+    <Image
+      source={imagePaths[currentImageIndex]}
+      resizeMode="contain"
+      style={styles.image}
+    />
   );
 }
+
+const styles = StyleSheet.create({
+  image: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: 150,
+    height: 300,
+    flexWrap: "wrap",
+    margin: "10%",
+    marginBottom: 20,
+    elevation: 3,
+  },
+});

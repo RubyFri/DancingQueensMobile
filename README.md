@@ -109,7 +109,8 @@ From there, navigate to test-project
 
 ```cd test-project```
 
-and run the tests 
+and run the tests. Please note that ONE TEST WILL FAIL because we hardcoded in TestUser2 with password 12345678900, to allow this test to pass insert the following SQL query into your local backend 
+```INSERT INTO `users`(`username`, `password`) VALUES ('TestUser2','12345678900') ```
 
 ```php vendor/bin/phpunit tests```
 

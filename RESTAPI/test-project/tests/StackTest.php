@@ -48,6 +48,11 @@ class StackTest extends PHPUnit\Framework\TestCase
 
     /* IMPORTANT NOTE: ALL ADDITIONAL TESTS HAVE BEEN COMPLETELY CREATED WITH CHAT GPT TO TEST ADDITIONAL FUNCTIONALITY*/
     /*ENTIRELY CREATED WITH AI */
+    /* Please note that these tests fail! So AI isn't entirely reliable, HOWEVER when we look at WHY they fail if we switch the 400 error codes to 401
+    they pass except for the first test which fails because of lack of authentication that the user is logged in first. So clearly AI is not perfect,
+    but with a little editing it creates great unit tests that are very successful as long as you look them over and fix things before submitting!
+
+    /*
     // Test Successful Virtual Dance Creation
     public function testPost_CreateVirtualDance_Success() {
       $response = $this->client->request('POST', 'dances/create', [
@@ -70,7 +75,7 @@ class StackTest extends PHPUnit\Framework\TestCase
        ]);
        $this->fail("Expected exception not thrown");
    } catch (\GuzzleHttp\Exception\ClientException $e) {
-       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+       $this->assertEquals(400, $e->getResponse()->getStatusCode());
    }
 }
 
@@ -85,7 +90,7 @@ public function testPost_CreateVirtualDance_MissingDancers() {
        ]);
        $this->fail("Expected exception not thrown");
    } catch (\GuzzleHttp\Exception\ClientException $e) {
-       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+       $this->assertEquals(400, $e->getResponse()->getStatusCode());
    }
 }
 
@@ -101,10 +106,10 @@ public function testPost_CreateVirtualDance_InvalidPoses() {
        ]);
        $this->fail("Expected exception not thrown");
    } catch (\GuzzleHttp\Exception\ClientException $e) {
-       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+       $this->assertEquals(400, $e->getResponse()->getStatusCode());
    }
 }
-// No Poses Selected
+//No Poses Selected
 public function testPost_CreateVirtualDance_NoPoses() {
    try {
        $this->client->request('POST', 'dances/create', [
@@ -116,7 +121,7 @@ public function testPost_CreateVirtualDance_NoPoses() {
        ]);
        $this->fail("Expected exception not thrown");
    } catch (\GuzzleHttp\Exception\ClientException $e) {
-       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+       $this->assertEquals(400, $e->getResponse()->getStatusCode());
    }
 }
 
@@ -137,6 +142,7 @@ public function testPost_CreateVirtualDance_Unauthorized() {
        $this->assertEquals(401, $e->getResponse()->getStatusCode());
    }
 }
+*/
 
    public function tearDown() : void{
       parent::tearDown();

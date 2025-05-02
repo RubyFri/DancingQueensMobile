@@ -46,6 +46,97 @@ class StackTest extends PHPUnit\Framework\TestCase
      }
     }
 
+    /* IMPORTANT NOTE: ALL ADDITIONAL TESTS HAVE BEEN COMPLETELY CREATED WITH CHAT GPT TO TEST ADDITIONAL FUNCTIONALITY*/
+    /*ENTIRELY CREATED WITH AI */
+    // Test Successful Virtual Dance Creation
+    public function testPost_CreateVirtualDance_Success() {
+      $response = $this->client->request('POST', 'dances/create', [
+          'json' => [
+              'username' => 'TestUser2',
+              'dancers' => 'Ruby,Yenta',
+              'poses' => '1,2,3'
+          ]
+      ]);
+      $this->assertEquals(201, $response->getStatusCode());
+  }
+  //Missing Username
+  public function testPost_CreateVirtualDance_MissingUsername() {
+   try {
+       $this->client->request('POST', 'dances/create', [
+           'json' => [
+               'dancers' => 'Ruby',
+               'poses' => '1'
+           ]
+       ]);
+       $this->fail("Expected exception not thrown");
+   } catch (\GuzzleHttp\Exception\ClientException $e) {
+       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+   }
+}
+
+//Missing Dancers
+public function testPost_CreateVirtualDance_MissingDancers() {
+   try {
+       $this->client->request('POST', 'dances/create', [
+           'json' => [
+               'username' => 'TestUser2',
+               'poses' => '1,2,3'
+           ]
+       ]);
+       $this->fail("Expected exception not thrown");
+   } catch (\GuzzleHttp\Exception\ClientException $e) {
+       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+   }
+}
+
+//Invalid Pose Values (e.g., non-numeric strings)
+public function testPost_CreateVirtualDance_InvalidPoses() {
+   try {
+       $this->client->request('POST', 'dances/create', [
+           'json' => [
+               'username' => 'TestUser2',
+               'dancers' => 'Ruby',
+               'poses' => 'banana'
+           ]
+       ]);
+       $this->fail("Expected exception not thrown");
+   } catch (\GuzzleHttp\Exception\ClientException $e) {
+       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+   }
+}
+// No Poses Selected
+public function testPost_CreateVirtualDance_NoPoses() {
+   try {
+       $this->client->request('POST', 'dances/create', [
+           'json' => [
+               'username' => 'TestUser2',
+               'dancers' => 'Ruby',
+               'poses' => ''
+           ]
+       ]);
+       $this->fail("Expected exception not thrown");
+   } catch (\GuzzleHttp\Exception\ClientException $e) {
+       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+   }
+}
+
+//Unauthorized User Token (if auth is required)
+public function testPost_CreateVirtualDance_Unauthorized() {
+   try {
+       $client = new GuzzleHttp\Client(['base_uri' => 'http://localhost:8080/index.php/']);
+       $client->request('POST', 'dances/create', [
+           'headers' => ['Authorization' => 'Bearer invalid_token'],
+           'json' => [
+               'username' => 'TestUser2',
+               'dancers' => 'Ruby',
+               'poses' => '1,2,3'
+           ]
+       ]);
+       $this->fail("Expected exception not thrown");
+   } catch (\GuzzleHttp\Exception\ClientException $e) {
+       $this->assertEquals(401, $e->getResponse()->getStatusCode());
+   }
+}
 
    public function tearDown() : void{
       parent::tearDown();
